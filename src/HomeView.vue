@@ -1,14 +1,52 @@
 <script setup>
-import { computed, onMounted } from 'vue'
-import { useCatalog } from '../composables/useCatalog'
-import AppIcon from '../components/AppIcon.vue'
-import BookCover from '../components/BookCover.vue'
-import BookCard from '../components/BookCard.vue'
-import DataState from '../components/DataState.vue'
-import AuthorAvatar from '../components/AuthorAvatar.vue'
-const { books, authors, authorMap, recentBooks, genres, loading, error, load } = useCatalog()
-const featured = computed(() => books.items.slice(0, 3))
-const featuredAuthors = computed(() => authors.items.slice(0, 4))
+import { computed, onMounted, ref } from 'vue'
+import { useBooksStore } from './books.js'
+import { useAuthorsStore } from './authors.js'
+import AppIcon from './AppIcon.vue'
+import BookCover from './BookCover.vue'
+import BookCard from './BookCard.vue'
+import DataState from './DataState.vue'
+import AuthorAvatar from './AuthorAvatar.vue'
+const bookStore = useBooksStore()
+const authorStore = useAuthorsStore()
+const loading = ref(true)
+const error = ref('')
+const authorMap = computed(() => {
+  const result = {}
+  for (const author of authorStore.authors) {
+    result[author.id] = author
+  }
+  return result
+})
+const genres = computed(() => {
+  const result = []
+  for (const book of bookStore.books) {
+    for (const tag of book.tags) {
+      if (!result.includes(tag)) result.push(tag)
+    }
+  }
+  return result.sort()
+})
+const recentBooks = computed(() => {
+  const result = bookStore.books.slice()
+  result.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+  return result.slice(0, 4)
+})
+async function load() {
+  loading.value = true
+  error.value = ''
+  try {
+    await bookStore.getBooks()
+    await authorStore.getAuthors()
+  } catch (failure) {
+    error.value = failure.message
+  } finally {
+    loading.value = false
+  }
+}
+
+const featured = computed(() => bookStore.books.slice(0, 3))
+const featuredAuthors = computed(() => authorStore.authors.slice(0, 4))
 const features = [
   {
     icon: 'book',
@@ -30,7 +68,7 @@ onMounted(load)
 </script>
 
 <template>
-  <section class="home-hero">
+<section class="home-hero">
     <div class="container hero-grid">
       <div class="hero-copy">
         <p class="eyebrow"><span class="small-line"></span> FOR THE LOVE OF READING</p>
@@ -84,12 +122,12 @@ onMounted(load)
   <div class="collection-strip">
     <div class="container">
       <span
-        ><AppIcon name="book" :size="17" /> {{ loading ? 'Curated' : books.items.length }} books to
+        ><AppIcon name="book" :size="17" /> {{ loading ? 'Curated' : bookStore.books.length }} books to
         get lost in</span
       ><span class="strip-divider">✦</span
       ><span
         ><AppIcon name="users" :size="17" />
-        {{ loading ? 'Inspiring' : authors.items.length }} voices worth knowing</span
+        {{ loading ? 'Inspiring' : authorStore.authors.length }} voices worth knowing</span
       ><span class="strip-divider">✦</span
       ><span><AppIcon name="globe" :size="17" /> Endless new perspectives</span>
     </div>

@@ -1,8 +1,8 @@
 <script setup>
 import { computed, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { useAuthStore } from '../stores/auth'
-import AppIcon from '../components/AppIcon.vue'
+import { useAuthStore } from './auth.js'
+import AppIcon from './AppIcon.vue'
 const auth = useAuthStore()
 const route = useRoute()
 const router = useRouter()
@@ -65,7 +65,7 @@ function fillDemo() {
           />
         </div>
         <p v-if="auth.error" id="login-error" class="field-error" role="alert">{{ auth.error }}</p>
-        <button class="btn btn-primary w-100" :disabled="!valid || auth.loading">
+        <button class="btn btn-primary w-100" :disabled="!valid">
           Sign in <AppIcon name="arrow" :size="18" />
         </button>
       </form>

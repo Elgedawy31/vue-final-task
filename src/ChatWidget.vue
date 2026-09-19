@@ -1,5 +1,5 @@
 <script setup>
-import { computed, nextTick, onBeforeUnmount, ref, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, ref } from 'vue'
 import AppIcon from './AppIcon.vue'
 const props = defineProps({
   entityType: { type: String, required: true },
@@ -17,19 +17,21 @@ const panel = ref(null)
 const scrollArea = ref(null)
 let controller = null
 let previousFocus = null
-const suggestions = computed(() =>
-  props.entityType === 'book'
-    ? [
-        'Give me a spoiler-free introduction',
-        'What themes does this book explore?',
-        'Tell me about the author',
-      ]
-    : [
-        'Tell me about this author',
-        'What is their writing style like?',
-        'Which of their books are in this library?',
-      ],
-)
+let leavingPage = false
+const suggestions = computed(() => {
+  if (props.entityType === 'book') {
+    return [
+      'Give me a spoiler-free introduction',
+      'What themes does this book explore?',
+      'Tell me about the author',
+    ]
+  }
+  return [
+    'Tell me about this author',
+    'What is their writing style like?',
+    'Which of their books are in this library?',
+  ]
+})
 const canSend = computed(
   () => !!input.value.trim() && input.value.trim().length <= 1000 && !sending.value,
 )
@@ -44,7 +46,11 @@ async function closeChat() {
   panel.value?.close()
   open.value = false
   await nextTick()
-  ;(previousFocus?.isConnected ? previousFocus : launcher.value)?.focus()
+  if (previousFocus && previousFocus.isConnected) {
+    previousFocus.focus()
+  } else if (launcher.value) {
+    launcher.value.focus()
+  }
 }
 async function scrollBottom() {
   await nextTick()
@@ -60,7 +66,7 @@ async function send(question = input.value) {
   await scrollBottom()
   if (open.value) inputElement.value?.focus()
   controller = new AbortController()
-  const timer = setTimeout(() => controller?.abort('timeout'), 50000)
+  const timer = setTimeout(() => controller.abort(), 50000)
   try {
     const response = await fetch('/api/chat', {
       method: 'POST',
@@ -77,13 +83,14 @@ async function send(question = input.value) {
       throw new Error(result.error || 'The reading assistant is unavailable. Please try again.')
     messages.value.push({ role: 'assistant', content: result.answer })
   } catch (failure) {
-    if (controller?.signal.reason === 'unmounted') return
-    error.value =
-      failure.name === 'SyntaxError' || failure instanceof TypeError
-        ? 'The reading assistant could not connect. Please try again.'
-        : controller?.signal.aborted
-          ? 'The reply took too long. Please try again.'
-          : failure.message
+    if (leavingPage) return
+    if (controller.signal.aborted) {
+      error.value = 'The reply took too long. Please try again.'
+    } else if (failure instanceof TypeError || failure.name === 'SyntaxError') {
+      error.value = 'The reading assistant could not connect. Please try again.'
+    } else {
+      error.value = failure.message
+    }
     messages.value.pop()
     input.value = text
   } finally {
@@ -103,15 +110,10 @@ function clearChat() {
     inputElement.value?.focus()
   }
 }
-watch(
-  () => props.entityId,
-  () => {
-    controller?.abort('unmounted')
-    clearChat()
-    open.value = false
-  },
-)
-onBeforeUnmount(() => controller?.abort('unmounted'))
+onBeforeUnmount(() => {
+  leavingPage = true
+  if (controller) controller.abort()
+})
 defineExpose({ openChat })
 </script>
 

@@ -1,6 +1,5 @@
 <script setup>
 import { computed, ref, watch } from 'vue'
-import { coverTheme } from '../helpers'
 const props = defineProps({
   book: { type: Object, required: true },
   author: { type: String, default: '' },
@@ -14,6 +13,15 @@ watch(
     failed.value = false
   },
 )
+function coverTheme(title = '') {
+  const colors = ['olive', 'rose', 'sand', 'ink', 'rust', 'sage']
+  let total = 0
+  for (let i = 0; i < title.length; i++) {
+    total += title.charCodeAt(i)
+  }
+  return colors[total % colors.length]
+}
+
 </script>
 
 <template>

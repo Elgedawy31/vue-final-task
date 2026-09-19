@@ -2,17 +2,26 @@
 
 مشروع كتب ومؤلفين باستخدام Vue وPinia وBootstrap وjson-server.
 
-التشغيل:
+ثبّت الحزم مرة واحدة:
 
 ```bash
 npm install
+```
+
+افتح terminal وشغّل البيانات والشات:
+
+```bash
+npm run server
+```
+
+وفي terminal تاني شغّل الواجهة:
+
+```bash
 npm run dev
 ```
 
 الموقع: http://localhost:5173
 
-حساب الإدارة التجريبي: `admin@folio.com` وكلمة المرور `Folio123!`.
+حساب الإدارة: `admin@folio.com` وكلمة المرور `Folio123!`.
 
-لتشغيل الشات، ضع مفتاح Gemini في `GEMINI_API_KEY` داخل `.env` وأعد التشغيل.
-
-`npm run build` لإنشاء نسخة الواجهة النهائية.
+لتفعيل الشات، ضع مفتاح Gemini في `GEMINI_API_KEY` داخل `.env` وأعد تشغيل `npm run server`.

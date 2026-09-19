@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import AppIcon from '../components/AppIcon.vue'
+import AppIcon from './AppIcon.vue'
 const active = ref(0)
 const questions = [
   {
