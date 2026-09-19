@@ -25,14 +25,26 @@ function coverTheme(title = '') {
 </script>
 
 <template>
-  <div class="book-cover" :class="`cover-${theme}`">
-    <div class="cover-art" aria-hidden="true">
-      <span class="cover-edition">THE FOLIO COLLECTION</span
-      ><span class="cover-title">{{ book.title }}</span>
-      <div class="cover-shape"><span></span><span></span><span></span></div>
-      <span class="cover-author">{{ author }}</span>
+  <div
+    class="book-cover position-relative overflow-hidden flex-shrink-0"
+    :class="`cover-${theme}`"
+  >
+    <div
+      class="cover-art h-100 d-flex flex-column align-items-center justify-content-between text-center position-relative overflow-hidden"
+      aria-hidden="true"
+    >
+      <span class="cover-edition border-bottom pb-1 w-100"
+        >THE FOLIO COLLECTION</span
+      ><span class="cover-title mw-100">{{ book.title }}</span>
+      <div class="cover-shape position-relative flex-shrink-1 mx-0 my-1">
+        <span class="position-absolute opacity-50"></span
+        ><span class="position-absolute opacity-50"></span
+        ><span class="position-absolute opacity-50"></span>
+      </div>
+      <span class="cover-author text-uppercase">{{ author }}</span>
     </div>
     <img
+      class="position-absolute w-100 h-100 object-fit-cover"
       v-if="book.coverUrl && !failed && !illustrated"
       :src="book.coverUrl"
       :alt="`${book.title} cover`"

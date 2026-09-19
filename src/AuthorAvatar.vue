@@ -32,8 +32,12 @@ function coverTheme(title = '') {
 </script>
 
 <template>
-  <div class="author-avatar" :class="`cover-${theme}`">
+  <div
+    class="author-avatar rounded-circle align-items-center justify-content-center overflow-hidden flex-shrink-0"
+    :class="`cover-${theme}`"
+  >
     <img
+      class="w-100 h-100 object-fit-cover"
       v-if="author.avatarUrl && !failed"
       :src="author.avatarUrl"
       :alt="author.name"
