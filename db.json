@@ -1,0 +1,238 @@
+{
+  "authors": [
+    {
+      "id": "1",
+      "name": "Andy Weir",
+      "bio": "An American novelist whose stories bring science, ingenuity, and a sense of humor to the challenge of surviving far from home. His books include The Martian and Project Hail Mary.",
+      "avatarUrl": "",
+      "createdAt": "2026-09-01T10:00:00.000Z",
+      "updatedAt": "2026-09-01T10:00:00.000Z"
+    },
+    {
+      "id": "2",
+      "name": "Agatha Christie",
+      "bio": "An English writer celebrated for intricately plotted mysteries and the unforgettable detectives Hercule Poirot and Miss Marple. Her stories invite readers to look a little closer at every clue.",
+      "avatarUrl": "",
+      "createdAt": "2026-09-01T10:00:00.000Z",
+      "updatedAt": "2026-09-01T10:00:00.000Z"
+    },
+    {
+      "id": "3",
+      "name": "Jane Austen",
+      "bio": "An English novelist known for her wit, social observation, and nuanced portraits of relationships. Her novels explore love, family, independence, and the expectations of society.",
+      "avatarUrl": "",
+      "createdAt": "2026-09-01T10:00:00.000Z",
+      "updatedAt": "2026-09-01T10:00:00.000Z"
+    },
+    {
+      "id": "4",
+      "name": "George Orwell",
+      "bio": "An English novelist and essayist whose writing examines power, language, and individual freedom. His best-known novels include Nineteen Eighty-Four and Animal Farm.",
+      "avatarUrl": "",
+      "createdAt": "2026-09-01T10:00:00.000Z",
+      "updatedAt": "2026-09-01T10:00:00.000Z"
+    },
+    {
+      "id": "5",
+      "name": "Mary Shelley",
+      "bio": "An English novelist whose Frankenstein helped shape science fiction. Her writing explores creation, responsibility, isolation, and what it means to be human.",
+      "avatarUrl": "",
+      "createdAt": "2026-09-01T10:00:00.000Z",
+      "updatedAt": "2026-09-01T10:00:00.000Z"
+    },
+    {
+      "id": "6",
+      "name": "J. R. R. Tolkien",
+      "bio": "An English writer and philologist who created Middle-earth. His richly imagined stories combine invented languages, deep histories, unlikely heroes, and the enduring pull of adventure.",
+      "avatarUrl": "",
+      "createdAt": "2026-09-01T10:00:00.000Z",
+      "updatedAt": "2026-09-01T10:00:00.000Z"
+    },
+    {
+      "id": "7",
+      "name": "Brandon Sanderson",
+      "bio": "An American fantasy novelist known for intricate magic systems and interconnected worlds. His work includes the Mistborn series and The Stormlight Archive.",
+      "avatarUrl": "",
+      "createdAt": "2026-09-01T10:00:00.000Z",
+      "updatedAt": "2026-09-01T10:00:00.000Z"
+    },
+    {
+      "id": "8",
+      "name": "Charlotte Brontë",
+      "bio": "An English novelist and poet whose fiction gives a powerful voice to inner life and personal independence. Jane Eyre remains her best-known novel.",
+      "avatarUrl": "",
+      "createdAt": "2026-09-01T10:00:00.000Z",
+      "updatedAt": "2026-09-01T10:00:00.000Z"
+    }
+  ],
+  "books": [
+    {
+      "id": "1",
+      "title": "Project Hail Mary",
+      "authorId": "1",
+      "year": 2021,
+      "tags": [
+        "science fiction",
+        "space"
+      ],
+      "description": "A lone astronaut wakes up millions of miles from Earth with no memory of his mission. As fragments return, he must solve an extraordinary scientific mystery with the future of humanity at stake. An inventive story of discovery, problem-solving, and unexpected friendship.",
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780593135204-L.jpg",
+      "createdAt": "2026-09-18T10:00:00.000Z",
+      "updatedAt": "2026-09-18T10:00:00.000Z"
+    },
+    {
+      "id": "2",
+      "title": "Pride and Prejudice",
+      "authorId": "3",
+      "year": 1813,
+      "tags": [
+        "classics",
+        "romance"
+      ],
+      "description": "When Elizabeth Bennet meets the reserved Mr. Darcy, first impressions seem impossible to overcome. Wit, family expectations, and misunderstandings unfold in a story about learning to see others—and ourselves—more clearly.",
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780141439518-L.jpg",
+      "createdAt": "2026-09-17T10:00:00.000Z",
+      "updatedAt": "2026-09-17T10:00:00.000Z"
+    },
+    {
+      "id": "3",
+      "title": "The Hobbit",
+      "authorId": "6",
+      "year": 1937,
+      "tags": [
+        "fantasy",
+        "adventure"
+      ],
+      "description": "Bilbo Baggins is quite content with a quiet life until a wizard and a company of dwarves arrive at his door. An unexpected journey takes him through mountains, riddles, and dangerous encounters toward a treasure guarded by a dragon.",
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780547928227-L.jpg",
+      "createdAt": "2026-09-16T10:00:00.000Z",
+      "updatedAt": "2026-09-16T10:00:00.000Z"
+    },
+    {
+      "id": "4",
+      "title": "The Murder of Roger Ackroyd",
+      "authorId": "2",
+      "year": 1926,
+      "tags": [
+        "mystery",
+        "classics"
+      ],
+      "description": "The peaceful village of King’s Abbot is shaken by a murder. Hercule Poirot comes out of retirement to investigate a household full of secrets in a mystery that rewards careful attention to every detail.",
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780062073563-L.jpg",
+      "createdAt": "2026-09-15T10:00:00.000Z",
+      "updatedAt": "2026-09-15T10:00:00.000Z"
+    },
+    {
+      "id": "5",
+      "title": "The Martian",
+      "authorId": "1",
+      "year": 2011,
+      "tags": [
+        "science fiction",
+        "adventure"
+      ],
+      "description": "After a mission goes wrong, astronaut Mark Watney is stranded on Mars. With limited supplies and no easy way home, he relies on science, resourcefulness, and stubborn optimism to keep going.",
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780553418026-L.jpg",
+      "createdAt": "2026-09-14T10:00:00.000Z",
+      "updatedAt": "2026-09-14T10:00:00.000Z"
+    },
+    {
+      "id": "6",
+      "title": "Nineteen Eighty-Four",
+      "authorId": "4",
+      "year": 1949,
+      "tags": [
+        "classics",
+        "dystopia"
+      ],
+      "description": "In a society of constant surveillance and controlled information, Winston Smith begins to question the world around him. A haunting exploration of power, memory, language, and the search for personal freedom.",
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780451524935-L.jpg",
+      "createdAt": "2026-09-13T10:00:00.000Z",
+      "updatedAt": "2026-09-13T10:00:00.000Z"
+    },
+    {
+      "id": "7",
+      "title": "Frankenstein",
+      "authorId": "5",
+      "year": 1818,
+      "tags": [
+        "classics",
+        "gothic"
+      ],
+      "description": "A young scientist brings a new being to life, then recoils from his own creation. Told through layered perspectives, this novel asks what creators owe their creations and what happens when compassion is withheld.",
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780141439471-L.jpg",
+      "createdAt": "2026-09-12T10:00:00.000Z",
+      "updatedAt": "2026-09-12T10:00:00.000Z"
+    },
+    {
+      "id": "8",
+      "title": "Mistborn: The Final Empire",
+      "authorId": "7",
+      "year": 2006,
+      "tags": [
+        "fantasy",
+        "adventure"
+      ],
+      "description": "In a world where ash falls from the sky and an immortal ruler holds power, a street thief discovers an extraordinary ability. A daring crew draws her into a plan that could change an empire.",
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780765311788-L.jpg",
+      "createdAt": "2026-09-11T10:00:00.000Z",
+      "updatedAt": "2026-09-11T10:00:00.000Z"
+    },
+    {
+      "id": "9",
+      "title": "Emma",
+      "authorId": "3",
+      "year": 1815,
+      "tags": [
+        "classics",
+        "romance"
+      ],
+      "description": "Confident in her judgment, Emma Woodhouse sets out to arrange the romantic lives of those around her. Her well-meant interference leads to misunderstandings, surprises, and a gradual understanding of her own heart.",
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780141439587-L.jpg",
+      "createdAt": "2026-09-10T10:00:00.000Z",
+      "updatedAt": "2026-09-10T10:00:00.000Z"
+    },
+    {
+      "id": "10",
+      "title": "Animal Farm",
+      "authorId": "4",
+      "year": 1945,
+      "tags": [
+        "classics",
+        "satire"
+      ],
+      "description": "The animals of a farm rise against their human owner in pursuit of a fairer life. Their revolution becomes a compact and unsettling fable about leadership, inequality, and the corruption of ideals.",
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780451526342-L.jpg",
+      "createdAt": "2026-09-09T10:00:00.000Z",
+      "updatedAt": "2026-09-09T10:00:00.000Z"
+    },
+    {
+      "id": "11",
+      "title": "Jane Eyre",
+      "authorId": "8",
+      "year": 1847,
+      "tags": [
+        "classics",
+        "gothic"
+      ],
+      "description": "An orphaned girl grows into an independent young woman and takes a position as a governess at Thornfield Hall. Love, difficult choices, and a hidden past test her determination to live according to her own conscience.",
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780141441146-L.jpg",
+      "createdAt": "2026-09-08T10:00:00.000Z",
+      "updatedAt": "2026-09-08T10:00:00.000Z"
+    },
+    {
+      "id": "12",
+      "title": "And Then There Were None",
+      "authorId": "2",
+      "year": 1939,
+      "tags": [
+        "mystery",
+        "suspense"
+      ],
+      "description": "Ten strangers accept invitations to an isolated island, only to discover that their host is absent and their pasts are not forgotten. As danger grows, every guest becomes both suspect and potential victim.",
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780062073488-L.jpg",
+      "createdAt": "2026-09-07T10:00:00.000Z",
+      "updatedAt": "2026-09-07T10:00:00.000Z"
+    }
+  ]
+}
