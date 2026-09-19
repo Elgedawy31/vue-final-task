@@ -1,33 +1,61 @@
-# Folio
+# Books & Authors
 
-مشروع كتب ومؤلفين باستخدام Vue وPinia وBootstrap وjson-server.
+A single page application for browsing books and authors, with an admin area for managing them.
 
-ثبّت الحزم مرة واحدة:
+Built with Vue 3, Vue Router, Pinia, and Bootstrap. The data comes from a json-server mock API.
 
-```bash
+## Running the project
+
+Install the packages first:
+
+```
 npm install
 ```
 
-افتح terminal وشغّل البيانات والشات:
+Then open two terminals.
 
-```bash
+Terminal 1 — the mock API:
+
+```
 npm run server
 ```
 
-وفي terminal تاني شغّل الواجهة:
+Terminal 2 — the app:
 
-```bash
+```
 npm run dev
 ```
 
-الموقع: http://localhost:5173
+The app runs on http://localhost:5173 and the API on http://localhost:3000.
 
-حساب الإدارة: `admin@folio.com` وكلمة المرور `Folio123!`.
+## Admin login
 
-لتفعيل الشات، ضع مفتاح Gemini في `GEMINI_API_KEY` داخل `.env` وأعد تشغيل `npm run server`.
+- Username: `admin`
+- Password: `admin`
 
-يمكنك نسخ `.env.example` إلى `.env` كبداية. الموديل الافتراضي هو `gemini-3.6-flash`، ويمكن تغييره عبر `GEMINI_MODEL`.
+## Pages
 
-في صفحة تفاصيل أي كتاب أو مؤلف، اضغط أيقونة **Ask Folio** أسفل اليمين لفتح الشات. المساعد يستخدم بيانات الكتاب ومؤلفه، أو بيانات المؤلف وكتبه الموجودة في المكتبة، ويرد بلغة سؤالك بما فيها العربية.
+| Route | Page |
+| --- | --- |
+| `/` | Home with recent books |
+| `/books` | All books, with search and author filter |
+| `/books/:id` | Book details |
+| `/authors` | All authors, with search |
+| `/authors/:id` | Author details and their books |
+| `/about` | About page with an FAQ accordion |
+| `/login` | Admin login |
+| `/admin` | Dashboard with book and author counts |
+| `/admin/books` | Books table with create, edit, and delete |
+| `/admin/authors` | Authors table with create, edit, and delete |
 
-المفتاح يُقرأ في السيرفر فقط، وملف `.env` مستبعد من Git. لتشغيل الشات على جهاز آخر، أضف المفتاح في `.env` على ذلك الجهاز.
+## Folder structure
+
+```
+src/
+├── components/     reusable pieces (Navbar, Footer, cards, Toast, DataState)
+├── views/          one component per page
+├── stores/         Pinia stores (book, author, auth, toast)
+├── router/         routes and the admin guard
+├── App.vue
+└── main.js
+```
