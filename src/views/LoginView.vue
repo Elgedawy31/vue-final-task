@@ -2,9 +2,11 @@
   <div class="row justify-content-center">
     <div class="col-md-5">
       <div class="card">
-        <div class="card-body">
-          <h3 class="card-title mb-3">Admin Login</h3>
+        <div class="card-header text-white" style="background-color: #3b5bdb">
+          <h5 class="mb-0 text-white">Admin Login</h5>
+        </div>
 
+        <div class="card-body">
           <p class="text-muted small">Use <strong>admin</strong> / <strong>admin</strong> to sign in.</p>
 
           <form @submit.prevent="handleSubmit">

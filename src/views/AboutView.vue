@@ -53,3 +53,10 @@ const faq = [
   },
 ];
 </script>
+
+<style scoped>
+.accordion-button:not(.collapsed) {
+  background-color: #eef1fb;
+  color: #2b3a67;
+}
+</style>

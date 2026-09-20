@@ -8,7 +8,10 @@
   </div>
 
   <div v-else-if="selectedAuthor">
-    <h2>{{ selectedAuthor.name }}</h2>
+    <div class="hero p-4 mb-4 d-flex align-items-center">
+      <div class="avatar me-3">{{ selectedAuthor.name.charAt(0).toUpperCase() }}</div>
+      <h2 class="mb-0">{{ selectedAuthor.name }}</h2>
+    </div>
 
     <p class="text-muted">{{ selectedAuthor.bio }}</p>
 
@@ -24,7 +27,7 @@
       </div>
     </div>
 
-    <RouterLink to="/authors" class="btn btn-outline-secondary mt-4">Back to Authors</RouterLink>
+    <RouterLink to="/authors" class="btn btn-outline-primary mt-4">Back to Authors</RouterLink>
   </div>
 
   <div v-else class="alert alert-secondary">Author not found.</div>
@@ -63,3 +66,19 @@ onMounted(loadData);
 
 watch(() => route.params.id, loadData);
 </script>
+
+<style scoped>
+.avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #3b5bdb;
+  color: white;
+  font-size: 1.4rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+</style>

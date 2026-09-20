@@ -22,18 +22,12 @@
       </p>
 
       <div class="mb-3">
-        <span
-          class="badge bg-light text-dark border me-1"
-          v-for="tag in selectedBook.tags"
-          :key="tag"
-        >
-          {{ tag }}
-        </span>
+        <span class="tag" v-for="tag in selectedBook.tags" :key="tag">{{ tag }}</span>
       </div>
 
       <p>{{ selectedBook.description }}</p>
 
-      <RouterLink to="/books" class="btn btn-outline-secondary">Back to Books</RouterLink>
+      <RouterLink to="/books" class="btn btn-outline-primary">Back to Books</RouterLink>
     </div>
   </div>
 

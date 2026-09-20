@@ -1,11 +1,11 @@
 <template>
   <!-- Hero -->
-  <div class="p-5 bg-white border rounded text-center mb-4">
-    <h1>Books & Authors</h1>
-    <p class="text-muted">Browse a small library of books and the people who wrote them.</p>
+  <div class="hero p-5 text-center mb-5">
+    <h1 class="mb-3">Books & Authors</h1>
+    <p class="text-muted mb-4">Browse a small library of books and the people who wrote them.</p>
 
     <RouterLink to="/books" class="btn btn-primary me-2">Browse Books</RouterLink>
-    <RouterLink to="/about" class="btn btn-outline-secondary">About</RouterLink>
+    <RouterLink to="/about" class="btn btn-outline-primary">About</RouterLink>
   </div>
 
   <!-- Features -->
@@ -13,6 +13,7 @@
     <div class="col-md-4" v-for="feature in features" :key="feature.title">
       <div class="card h-100">
         <div class="card-body">
+          <div class="feature-icon mb-3">{{ feature.icon }}</div>
           <h5 class="card-title">{{ feature.title }}</h5>
           <p class="card-text text-muted">{{ feature.text }}</p>
         </div>
@@ -55,9 +56,9 @@ const { getAllBooks } = bookStore;
 const { getAllAuthors } = authorStore;
 
 const features = [
-  { title: "Find a book", text: "Search the catalogue by title or filter by author." },
-  { title: "Meet the authors", text: "Read short biographies and see what each author wrote." },
-  { title: "Manage the library", text: "Add, edit, and remove books and authors from the admin area." },
+  { icon: "🔍", title: "Find a book", text: "Search the catalogue by title or filter by author." },
+  { icon: "✍️", title: "Meet the authors", text: "Read short biographies and see what each author wrote." },
+  { icon: "📚", title: "Manage the library", text: "Add, edit, and remove books and authors from the admin area." },
 ];
 
 const recentBooks = computed(() => books.value.slice(0, 4));
@@ -74,3 +75,9 @@ const loadData = async () => {
 
 onMounted(loadData);
 </script>
+
+<style scoped>
+.feature-icon {
+  font-size: 1.8rem;
+}
+</style>

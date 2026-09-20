@@ -1,7 +1,7 @@
 <template>
   <h2 class="mb-4">Authors</h2>
 
-  <div class="mb-4">
+  <div class="mb-4 bg-white border rounded p-3">
     <label class="form-label" for="search">Search by name</label>
     <input id="search" type="text" class="form-control" v-model="search" placeholder="Author name" />
   </div>

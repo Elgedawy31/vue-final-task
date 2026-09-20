@@ -1,3 +1,96 @@
+/* Colors used across the app */
+:root {
+  --bs-primary: #3b5bdb;
+  --bs-primary-rgb: 59, 91, 219;
+  --brand-dark: #2b3a67;
+  --brand-soft: #eef1fb;
+}
+
 body {
-  background-color: #f8f9fa;
+  background-color: #f4f6fb;
+  color: #333;
+}
+
+/* Bootstrap's .btn-primary uses its own variables, so we set them here */
+.btn-primary {
+  --bs-btn-bg: #3b5bdb;
+  --bs-btn-border-color: #3b5bdb;
+  --bs-btn-hover-bg: #2f49b0;
+  --bs-btn-hover-border-color: #2f49b0;
+  --bs-btn-active-bg: #2f49b0;
+  --bs-btn-active-border-color: #2f49b0;
+}
+
+.btn-outline-primary {
+  --bs-btn-color: #3b5bdb;
+  --bs-btn-border-color: #3b5bdb;
+  --bs-btn-hover-bg: #3b5bdb;
+  --bs-btn-hover-border-color: #3b5bdb;
+}
+
+a {
+  color: #3b5bdb;
+}
+
+/* Cards */
+.card {
+  border: 1px solid #e4e8f2;
+  border-radius: 10px;
+}
+
+.card-title {
+  color: var(--brand-dark);
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4 {
+  color: var(--brand-dark);
+  font-weight: 600;
+}
+
+/* Page hero */
+.hero {
+  background-color: var(--brand-soft);
+  border: 1px solid #dde3f7;
+  border-radius: 12px;
+}
+
+/* Tags */
+.tag {
+  background-color: var(--brand-soft);
+  color: var(--brand-dark);
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 0.78rem;
+  margin-right: 4px;
+}
+
+/* Dashboard number */
+.stat-number {
+  color: #3b5bdb;
+  font-size: 2.6rem;
+  font-weight: 700;
+}
+
+/* Navbar */
+.navbar {
+  border-bottom: 3px solid #3b5bdb;
+}
+
+.navbar-brand {
+  color: var(--brand-dark);
+}
+
+.nav-link.router-link-active {
+  color: #3b5bdb;
+  font-weight: 600;
+}
+
+/* Tables */
+.table thead th {
+  background-color: var(--brand-soft);
+  color: var(--brand-dark);
 }

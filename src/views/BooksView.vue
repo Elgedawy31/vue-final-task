@@ -2,7 +2,7 @@
   <h2 class="mb-4">Books</h2>
 
   <!-- Search and filter -->
-  <div class="row g-2 mb-4">
+  <div class="row g-2 mb-4 bg-white border rounded p-3">
     <div class="col-md-8">
       <label class="form-label" for="search">Search by title</label>
       <input id="search" type="text" class="form-control" v-model="search" placeholder="Book title" />

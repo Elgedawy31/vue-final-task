@@ -5,7 +5,7 @@
     <div class="col-md-6">
       <div class="card text-center">
         <div class="card-body">
-          <h1 class="mb-0">{{ books.length }}</h1>
+          <div class="stat-number">{{ books.length }}</div>
           <p class="text-muted mb-0">Books</p>
         </div>
       </div>
@@ -14,7 +14,7 @@
     <div class="col-md-6">
       <div class="card text-center">
         <div class="card-body">
-          <h1 class="mb-0">{{ authors.length }}</h1>
+          <div class="stat-number">{{ authors.length }}</div>
           <p class="text-muted mb-0">Authors</p>
         </div>
       </div>

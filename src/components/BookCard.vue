@@ -13,13 +13,7 @@
       <p class="text-muted small mb-2">{{ authorName }} &middot; {{ book.year }}</p>
 
       <div class="mb-3">
-        <span
-          class="badge bg-light text-dark border me-1"
-          v-for="tag in book.tags"
-          :key="tag"
-        >
-          {{ tag }}
-        </span>
+        <span class="tag" v-for="tag in book.tags" :key="tag">{{ tag }}</span>
       </div>
 
       <RouterLink :to="`/books/${book.id}`" class="btn btn-primary mt-auto">
