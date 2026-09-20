@@ -3,12 +3,16 @@
     <div class="card-body d-flex flex-column">
       <div class="d-flex align-items-center mb-3">
         <div class="avatar me-3">{{ initial }}</div>
-        <h5 class="card-title mb-0">{{ author.name }}</h5>
+
+        <div>
+          <h5 class="mb-0">{{ author.name }}</h5>
+          <p class="eyebrow mb-0">{{ bookCount }}</p>
+        </div>
       </div>
 
       <p class="text-muted small">{{ shortBio }}</p>
 
-      <RouterLink :to="`/authors/${author.id}`" class="btn btn-primary mt-auto">
+      <RouterLink :to="`/authors/${author.id}`" class="btn btn-outline-secondary btn-sm mt-auto">
         View Details
       </RouterLink>
     </div>
@@ -23,9 +27,17 @@ const props = defineProps({
     type: Object,
     required: true,
   },
+  books: {
+    type: Number,
+    default: 0,
+  },
 });
 
 const initial = computed(() => props.author.name.charAt(0).toUpperCase());
+
+const bookCount = computed(() =>
+  props.books === 1 ? "1 book" : `${props.books} books`
+);
 
 const shortBio = computed(() => {
   if (!props.author.bio) return "No biography yet.";
@@ -36,15 +48,8 @@ const shortBio = computed(() => {
 
 <style scoped>
 .avatar {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background-color: #3b5bdb;
-  color: white;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  font-size: 1.2rem;
 }
 </style>

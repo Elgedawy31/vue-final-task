@@ -1,13 +1,13 @@
 <template>
-  <div class="row justify-content-center">
+  <div class="row justify-content-center py-4">
     <div class="col-md-5">
       <div class="card">
-        <div class="card-header text-white" style="background-color: #3b5bdb">
-          <h5 class="mb-0 text-white">Admin Login</h5>
-        </div>
-
-        <div class="card-body">
-          <p class="text-muted small">Use <strong>admin</strong> / <strong>admin</strong> to sign in.</p>
+        <div class="card-body p-4">
+          <p class="eyebrow mb-2">Admin</p>
+          <h3 class="mb-2">Sign in</h3>
+          <p class="text-muted small mb-4">
+            Use <strong>admin</strong> / <strong>admin</strong> to sign in.
+          </p>
 
           <form @submit.prevent="handleSubmit">
             <div class="mb-3">

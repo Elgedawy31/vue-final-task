@@ -1,28 +1,57 @@
 <template>
   <!-- Hero -->
-  <div class="hero p-5 text-center mb-5">
-    <h1 class="mb-3">Books & Authors</h1>
-    <p class="text-muted mb-4">Browse a small library of books and the people who wrote them.</p>
+  <div class="hero p-5 mb-5">
+    <div class="row align-items-center g-4">
+      <div class="col-lg-7">
+        <p class="eyebrow mb-3">A small library</p>
 
-    <RouterLink to="/books" class="btn btn-primary me-2">Browse Books</RouterLink>
-    <RouterLink to="/about" class="btn btn-outline-primary">About</RouterLink>
-  </div>
+        <h1 class="mb-3">Find your next good book.</h1>
 
-  <!-- Features -->
-  <div class="row g-3 mb-5">
-    <div class="col-md-4" v-for="feature in features" :key="feature.title">
-      <div class="card h-100">
-        <div class="card-body">
-          <div class="feature-icon mb-3">{{ feature.icon }}</div>
-          <h5 class="card-title">{{ feature.title }}</h5>
-          <p class="card-text text-muted">{{ feature.text }}</p>
+        <p class="text-muted mb-4" style="max-width: 460px">
+          Browse a collection of books and the people who wrote them. Search by title,
+          explore an author, and keep the shelves in order from the admin area.
+        </p>
+
+        <RouterLink to="/books" class="btn btn-primary me-2">Browse Books</RouterLink>
+        <RouterLink to="/authors" class="btn btn-outline-secondary">Meet the Authors</RouterLink>
+      </div>
+
+      <div class="col-lg-5 d-none d-lg-block">
+        <div class="hero-counts">
+          <div class="mb-4">
+            <div class="stat-number">{{ books.length }}</div>
+            <p class="eyebrow mb-0">Books on the shelf</p>
+          </div>
+
+          <div>
+            <div class="stat-number">{{ authors.length }}</div>
+            <p class="eyebrow mb-0">Authors</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- Features -->
+  <div class="row g-4 mb-5">
+    <div class="col-md-4" v-for="feature in features" :key="feature.title">
+      <div class="h-100 pe-3">
+        <p class="eyebrow mb-2">{{ feature.label }}</p>
+        <h4 class="mb-2">{{ feature.title }}</h4>
+        <p class="text-muted small mb-0">{{ feature.text }}</p>
+      </div>
+    </div>
+  </div>
+
   <!-- Recent books -->
-  <h3 class="mb-3">Recent Books</h3>
+  <div class="d-flex justify-content-between align-items-end mb-4">
+    <div>
+      <p class="eyebrow mb-2">Latest additions</p>
+      <h2 class="mb-0">Recent Books</h2>
+    </div>
+
+    <RouterLink to="/books" class="btn btn-outline-secondary btn-sm">View all</RouterLink>
+  </div>
 
   <DataState
     :loading="loading"
@@ -31,7 +60,7 @@
     empty-text="No books yet."
     @retry="loadData"
   >
-    <div class="row g-3">
+    <div class="row g-4">
       <div class="col-12 col-sm-6 col-lg-3" v-for="book in recentBooks" :key="book.id">
         <BookCard :book="book" :author-name="getAuthorName(book.authorId)" />
       </div>
@@ -56,9 +85,21 @@ const { getAllBooks } = bookStore;
 const { getAllAuthors } = authorStore;
 
 const features = [
-  { icon: "🔍", title: "Find a book", text: "Search the catalogue by title or filter by author." },
-  { icon: "✍️", title: "Meet the authors", text: "Read short biographies and see what each author wrote." },
-  { icon: "📚", title: "Manage the library", text: "Add, edit, and remove books and authors from the admin area." },
+  {
+    label: "Search",
+    title: "Find a book",
+    text: "Search the catalogue by title or narrow the list down to a single author.",
+  },
+  {
+    label: "Authors",
+    title: "Meet the writers",
+    text: "Read a short biography and see everything an author has on the shelf.",
+  },
+  {
+    label: "Admin",
+    title: "Keep it tidy",
+    text: "Add, edit, and remove books and authors from the admin area.",
+  },
 ];
 
 const recentBooks = computed(() => books.value.slice(0, 4));
@@ -77,7 +118,8 @@ onMounted(loadData);
 </script>
 
 <style scoped>
-.feature-icon {
-  font-size: 1.8rem;
+.hero-counts {
+  border-left: 1px solid #dcdcd0;
+  padding-left: 2.5rem;
 }
 </style>

@@ -1,6 +1,10 @@
 <template>
-  <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2 class="mb-0">Authors</h2>
+  <div class="d-flex justify-content-between align-items-end mb-4">
+    <div>
+      <p class="eyebrow mb-2">Admin</p>
+      <h2 class="mb-0">Authors</h2>
+    </div>
+
     <RouterLink to="/admin/authors/new" class="btn btn-primary">Add Author</RouterLink>
   </div>
 
@@ -11,9 +15,9 @@
     empty-text="No authors yet. Use Add Author to create one."
     @retry="getAllAuthors"
   >
-    <div class="table-responsive" style="max-height: 500px; overflow-y: auto">
-      <table class="table table-hover align-middle">
-        <thead class="table-light position-sticky top-0">
+    <div class="card table-responsive" style="max-height: 520px; overflow-y: auto">
+      <table class="table table-hover align-middle mb-0">
+        <thead class="position-sticky top-0">
           <tr>
             <th>Name</th>
             <th>Bio</th>

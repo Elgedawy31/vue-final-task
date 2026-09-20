@@ -1,7 +1,7 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom mb-4">
+  <nav class="navbar navbar-expand-lg mb-5">
     <div class="container">
-      <RouterLink class="navbar-brand fw-bold" to="/">Books & Authors</RouterLink>
+      <RouterLink class="navbar-brand" to="/">Folio</RouterLink>
 
       <button
         class="navbar-toggler"
@@ -13,24 +13,24 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
           <li class="nav-item">
-            <RouterLink class="nav-link" to="/">Home</RouterLink>
+            <RouterLink class="nav-link px-3" to="/">Home</RouterLink>
           </li>
           <li class="nav-item">
-            <RouterLink class="nav-link" to="/books">Books</RouterLink>
+            <RouterLink class="nav-link px-3" to="/books">Books</RouterLink>
           </li>
           <li class="nav-item">
-            <RouterLink class="nav-link" to="/authors">Authors</RouterLink>
+            <RouterLink class="nav-link px-3" to="/authors">Authors</RouterLink>
           </li>
           <li class="nav-item">
-            <RouterLink class="nav-link" to="/about">About</RouterLink>
+            <RouterLink class="nav-link px-3" to="/about">About</RouterLink>
           </li>
-          <li class="nav-item">
-            <RouterLink class="nav-link" to="/admin">Admin</RouterLink>
+          <li class="nav-item ms-lg-2">
+            <RouterLink class="btn btn-primary btn-sm" to="/admin">Admin</RouterLink>
           </li>
-          <li class="nav-item" v-if="isLoggedIn">
-            <button class="btn btn-sm btn-outline-secondary ms-lg-2" @click="handleLogout">
+          <li class="nav-item ms-lg-2" v-if="isLoggedIn">
+            <button class="btn btn-outline-secondary btn-sm" @click="handleLogout">
               Logout
             </button>
           </li>

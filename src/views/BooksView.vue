@@ -1,21 +1,24 @@
 <template>
+  <p class="eyebrow mb-2">The collection</p>
   <h2 class="mb-4">Books</h2>
 
   <!-- Search and filter -->
-  <div class="row g-2 mb-4 bg-white border rounded p-3">
-    <div class="col-md-8">
-      <label class="form-label" for="search">Search by title</label>
-      <input id="search" type="text" class="form-control" v-model="search" placeholder="Book title" />
-    </div>
+  <div class="card mb-4">
+    <div class="card-body row g-3">
+      <div class="col-md-8">
+        <label class="form-label" for="search">Search by title</label>
+        <input id="search" type="text" class="form-control" v-model="search" placeholder="Book title" />
+      </div>
 
-    <div class="col-md-4">
-      <label class="form-label" for="author">Filter by author</label>
-      <select id="author" class="form-select" v-model="selectedAuthorId">
-        <option value="">All authors</option>
-        <option v-for="author in authors" :key="author.id" :value="author.id">
-          {{ author.name }}
-        </option>
-      </select>
+      <div class="col-md-4">
+        <label class="form-label" for="author">Filter by author</label>
+        <select id="author" class="form-select" v-model="selectedAuthorId">
+          <option value="">All authors</option>
+          <option v-for="author in authors" :key="author.id" :value="author.id">
+            {{ author.name }}
+          </option>
+        </select>
+      </div>
     </div>
   </div>
 
@@ -26,7 +29,7 @@
     empty-text="No books match your search."
     @retry="loadData"
   >
-    <div class="row g-3">
+    <div class="row g-4">
       <div class="col-12 col-sm-6 col-lg-3" v-for="book in filteredBooks" :key="book.id">
         <BookCard :book="book" :author-name="getAuthorName(book.authorId)" />
       </div>

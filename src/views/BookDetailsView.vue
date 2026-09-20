@@ -7,27 +7,33 @@
     Something went wrong while loading this book.
   </div>
 
-  <div v-else-if="selectedBook" class="row g-4">
-    <div class="col-md-4">
-      <img :src="selectedBook.coverUrl" :alt="selectedBook.title" class="img-fluid rounded border" />
-    </div>
-
-    <div class="col-md-8">
-      <h2>{{ selectedBook.title }}</h2>
-
-      <p class="text-muted">
-        <RouterLink v-if="author" :to="`/authors/${author.id}`">{{ author.name }}</RouterLink>
-        <span v-else>Unknown author</span>
-        &middot; {{ selectedBook.year }}
-      </p>
-
-      <div class="mb-3">
-        <span class="tag" v-for="tag in selectedBook.tags" :key="tag">{{ tag }}</span>
+  <div v-else-if="selectedBook">
+    <div class="row g-5">
+      <div class="col-md-4">
+        <div class="book-art">
+          <img :src="selectedBook.coverUrl" :alt="selectedBook.title" class="book-cover" />
+        </div>
       </div>
 
-      <p>{{ selectedBook.description }}</p>
+      <div class="col-md-8">
+        <p class="eyebrow mb-2">Published {{ selectedBook.year }}</p>
 
-      <RouterLink to="/books" class="btn btn-outline-primary">Back to Books</RouterLink>
+        <h1 class="mb-3">{{ selectedBook.title }}</h1>
+
+        <p class="text-muted mb-4">
+          By
+          <RouterLink v-if="author" :to="`/authors/${author.id}`">{{ author.name }}</RouterLink>
+          <span v-else>an unknown author</span>
+        </p>
+
+        <div class="mb-4">
+          <span class="tag" v-for="tag in selectedBook.tags" :key="tag">{{ tag }}</span>
+        </div>
+
+        <p class="mb-4">{{ selectedBook.description }}</p>
+
+        <RouterLink to="/books" class="btn btn-outline-secondary">Back to Books</RouterLink>
+      </div>
     </div>
   </div>
 
@@ -66,3 +72,21 @@ onMounted(loadData);
 
 watch(() => route.params.id, loadData);
 </script>
+
+<style scoped>
+.book-art {
+  background: #efede6;
+  border: 1px solid #e4e6dc;
+  border-radius: 6px;
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.book-cover {
+  max-width: 100%;
+  box-shadow: 6px 8px 15px #222b241e;
+  border-radius: 1px 3px 3px 1px;
+}
+</style>

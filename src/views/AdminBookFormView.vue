@@ -1,102 +1,105 @@
 <template>
+  <p class="eyebrow mb-2">Books</p>
   <h2 class="mb-4">{{ isEdit ? "Edit Book" : "Add Book" }}</h2>
 
-  <form @submit.prevent="handleSubmit" novalidate>
-    <!-- Title -->
-    <div class="mb-3">
-      <label class="form-label" for="title">Title</label>
-      <input
-        id="title"
-        type="text"
-        class="form-control"
-        :class="{ 'is-invalid': errors.title }"
-        :aria-invalid="errors.title ? 'true' : 'false'"
-        v-model="form.title"
-      />
-      <div class="invalid-feedback">{{ errors.title }}</div>
+  <form @submit.prevent="handleSubmit" novalidate class="card">
+    <div class="card-body p-4">
+      <!-- Title -->
+      <div class="mb-3">
+        <label class="form-label" for="title">Title</label>
+        <input
+          id="title"
+          type="text"
+          class="form-control"
+          :class="{ 'is-invalid': errors.title }"
+          :aria-invalid="errors.title ? 'true' : 'false'"
+          v-model="form.title"
+        />
+        <div class="invalid-feedback">{{ errors.title }}</div>
+      </div>
+
+      <!-- Author -->
+      <div class="mb-3">
+        <label class="form-label" for="authorId">Author</label>
+        <select
+          id="authorId"
+          class="form-select"
+          :class="{ 'is-invalid': errors.authorId }"
+          :aria-invalid="errors.authorId ? 'true' : 'false'"
+          v-model="form.authorId"
+        >
+          <option value="">Choose an author</option>
+          <option v-for="author in authors" :key="author.id" :value="author.id">
+            {{ author.name }}
+          </option>
+        </select>
+        <div class="invalid-feedback">{{ errors.authorId }}</div>
+      </div>
+
+      <!-- Year -->
+      <div class="mb-3">
+        <label class="form-label" for="year">Year</label>
+        <input
+          id="year"
+          type="number"
+          class="form-control"
+          :class="{ 'is-invalid': errors.year }"
+          :aria-invalid="errors.year ? 'true' : 'false'"
+          v-model.number="form.year"
+        />
+        <div class="invalid-feedback">{{ errors.year }}</div>
+      </div>
+
+      <!-- Tags -->
+      <div class="mb-3">
+        <label class="form-label" for="tags">Tags</label>
+        <input
+          id="tags"
+          type="text"
+          class="form-control"
+          :class="{ 'is-invalid': errors.tags }"
+          :aria-invalid="errors.tags ? 'true' : 'false'"
+          v-model="tagsText"
+        />
+        <div class="form-text">Separate tags with a comma. Up to 8 tags.</div>
+        <div class="invalid-feedback">{{ errors.tags }}</div>
+      </div>
+
+      <!-- Cover URL -->
+      <div class="mb-3">
+        <label class="form-label" for="coverUrl">Cover URL</label>
+        <input
+          id="coverUrl"
+          type="text"
+          class="form-control"
+          :class="{ 'is-invalid': errors.coverUrl }"
+          :aria-invalid="errors.coverUrl ? 'true' : 'false'"
+          v-model="form.coverUrl"
+        />
+        <div class="invalid-feedback">{{ errors.coverUrl }}</div>
+      </div>
+
+      <!-- Description -->
+      <div class="mb-3">
+        <label class="form-label" for="description">Description</label>
+        <textarea
+          id="description"
+          rows="5"
+          class="form-control"
+          :class="{ 'is-invalid': errors.description }"
+          :aria-invalid="errors.description ? 'true' : 'false'"
+          v-model="form.description"
+        ></textarea>
+        <div class="form-text">{{ form.description.length }} / 2000</div>
+        <div class="invalid-feedback">{{ errors.description }}</div>
+      </div>
+
+      <button type="submit" class="btn btn-primary me-2" :disabled="!isValid || saving">
+        {{ saving ? "Saving..." : "Save" }}
+      </button>
+
+      <RouterLink to="/admin/books" class="btn btn-outline-secondary">Cancel</RouterLink>
     </div>
-
-    <!-- Author -->
-    <div class="mb-3">
-      <label class="form-label" for="authorId">Author</label>
-      <select
-        id="authorId"
-        class="form-select"
-        :class="{ 'is-invalid': errors.authorId }"
-        :aria-invalid="errors.authorId ? 'true' : 'false'"
-        v-model="form.authorId"
-      >
-        <option value="">Choose an author</option>
-        <option v-for="author in authors" :key="author.id" :value="author.id">
-          {{ author.name }}
-        </option>
-      </select>
-      <div class="invalid-feedback">{{ errors.authorId }}</div>
-    </div>
-
-    <!-- Year -->
-    <div class="mb-3">
-      <label class="form-label" for="year">Year</label>
-      <input
-        id="year"
-        type="number"
-        class="form-control"
-        :class="{ 'is-invalid': errors.year }"
-        :aria-invalid="errors.year ? 'true' : 'false'"
-        v-model.number="form.year"
-      />
-      <div class="invalid-feedback">{{ errors.year }}</div>
-    </div>
-
-    <!-- Tags -->
-    <div class="mb-3">
-      <label class="form-label" for="tags">Tags</label>
-      <input
-        id="tags"
-        type="text"
-        class="form-control"
-        :class="{ 'is-invalid': errors.tags }"
-        :aria-invalid="errors.tags ? 'true' : 'false'"
-        v-model="tagsText"
-      />
-      <div class="form-text">Separate tags with a comma. Up to 8 tags.</div>
-      <div class="invalid-feedback">{{ errors.tags }}</div>
-    </div>
-
-    <!-- Cover URL -->
-    <div class="mb-3">
-      <label class="form-label" for="coverUrl">Cover URL</label>
-      <input
-        id="coverUrl"
-        type="text"
-        class="form-control"
-        :class="{ 'is-invalid': errors.coverUrl }"
-        :aria-invalid="errors.coverUrl ? 'true' : 'false'"
-        v-model="form.coverUrl"
-      />
-      <div class="invalid-feedback">{{ errors.coverUrl }}</div>
-    </div>
-
-    <!-- Description -->
-    <div class="mb-3">
-      <label class="form-label" for="description">Description</label>
-      <textarea
-        id="description"
-        rows="5"
-        class="form-control"
-        :class="{ 'is-invalid': errors.description }"
-        :aria-invalid="errors.description ? 'true' : 'false'"
-        v-model="form.description"
-      ></textarea>
-      <div class="form-text">{{ form.description.length }} / 2000</div>
-      <div class="invalid-feedback">{{ errors.description }}</div>
-    </div>
-
-    <button type="submit" class="btn btn-primary me-2" :disabled="!isValid || saving">
-      {{ saving ? "Saving..." : "Save" }}
-    </button>
-
-    <RouterLink to="/admin/books" class="btn btn-outline-secondary">Cancel</RouterLink>
   </form>
 </template>
 

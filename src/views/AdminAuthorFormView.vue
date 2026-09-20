@@ -1,55 +1,58 @@
 <template>
+  <p class="eyebrow mb-2">Authors</p>
   <h2 class="mb-4">{{ isEdit ? "Edit Author" : "Add Author" }}</h2>
 
-  <form @submit.prevent="handleSubmit" novalidate>
-    <!-- Name -->
-    <div class="mb-3">
-      <label class="form-label" for="name">Name</label>
-      <input
-        id="name"
-        type="text"
-        class="form-control"
-        :class="{ 'is-invalid': errors.name }"
-        :aria-invalid="errors.name ? 'true' : 'false'"
-        v-model="form.name"
-      />
-      <div class="invalid-feedback">{{ errors.name }}</div>
+  <form @submit.prevent="handleSubmit" novalidate class="card">
+    <div class="card-body p-4">
+      <!-- Name -->
+      <div class="mb-3">
+        <label class="form-label" for="name">Name</label>
+        <input
+          id="name"
+          type="text"
+          class="form-control"
+          :class="{ 'is-invalid': errors.name }"
+          :aria-invalid="errors.name ? 'true' : 'false'"
+          v-model="form.name"
+        />
+        <div class="invalid-feedback">{{ errors.name }}</div>
+      </div>
+
+      <!-- Bio -->
+      <div class="mb-3">
+        <label class="form-label" for="bio">Bio</label>
+        <textarea
+          id="bio"
+          rows="5"
+          class="form-control"
+          :class="{ 'is-invalid': errors.bio }"
+          :aria-invalid="errors.bio ? 'true' : 'false'"
+          v-model="form.bio"
+        ></textarea>
+        <div class="form-text">{{ form.bio.length }} / 800</div>
+        <div class="invalid-feedback">{{ errors.bio }}</div>
+      </div>
+
+      <!-- Avatar URL -->
+      <div class="mb-3">
+        <label class="form-label" for="avatarUrl">Avatar URL</label>
+        <input
+          id="avatarUrl"
+          type="text"
+          class="form-control"
+          :class="{ 'is-invalid': errors.avatarUrl }"
+          :aria-invalid="errors.avatarUrl ? 'true' : 'false'"
+          v-model="form.avatarUrl"
+        />
+        <div class="invalid-feedback">{{ errors.avatarUrl }}</div>
+      </div>
+
+      <button type="submit" class="btn btn-primary me-2" :disabled="!isValid || saving">
+        {{ saving ? "Saving..." : "Save" }}
+      </button>
+
+      <RouterLink to="/admin/authors" class="btn btn-outline-secondary">Cancel</RouterLink>
     </div>
-
-    <!-- Bio -->
-    <div class="mb-3">
-      <label class="form-label" for="bio">Bio</label>
-      <textarea
-        id="bio"
-        rows="5"
-        class="form-control"
-        :class="{ 'is-invalid': errors.bio }"
-        :aria-invalid="errors.bio ? 'true' : 'false'"
-        v-model="form.bio"
-      ></textarea>
-      <div class="form-text">{{ form.bio.length }} / 800</div>
-      <div class="invalid-feedback">{{ errors.bio }}</div>
-    </div>
-
-    <!-- Avatar URL -->
-    <div class="mb-3">
-      <label class="form-label" for="avatarUrl">Avatar URL</label>
-      <input
-        id="avatarUrl"
-        type="text"
-        class="form-control"
-        :class="{ 'is-invalid': errors.avatarUrl }"
-        :aria-invalid="errors.avatarUrl ? 'true' : 'false'"
-        v-model="form.avatarUrl"
-      />
-      <div class="invalid-feedback">{{ errors.avatarUrl }}</div>
-    </div>
-
-    <button type="submit" class="btn btn-primary me-2" :disabled="!isValid || saving">
-      {{ saving ? "Saving..." : "Save" }}
-    </button>
-
-    <RouterLink to="/admin/authors" class="btn btn-outline-secondary">Cancel</RouterLink>
   </form>
 </template>
 

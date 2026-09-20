@@ -1,96 +1,224 @@
-/* Colors used across the app */
+/* Fonts */
+@font-face {
+  font-family: 'DM Sans';
+  font-weight: 400;
+  font-display: swap;
+  src: url(/fonts/font-0.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'DM Sans';
+  font-weight: 500;
+  font-display: swap;
+  src: url(/fonts/font-1.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'DM Sans';
+  font-weight: 700;
+  font-display: swap;
+  src: url(/fonts/font-3.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'DM Serif Display';
+  font-weight: 400;
+  font-display: swap;
+  src: url(/fonts/font-5.ttf) format('truetype');
+}
+
+/* Colors and fonts used across the app */
 :root {
-  --bs-primary: #3b5bdb;
-  --bs-primary-rgb: 59, 91, 219;
-  --brand-dark: #2b3a67;
-  --brand-soft: #eef1fb;
+  --paper: #faf9f5;
+  --cream: #f2f0e8;
+  --green: #244c3d;
+  --green-deep: #183b2f;
+  --ink: #283b32;
+  --muted: #737b71;
+  --line: #e4e6dc;
+
+  --serif: 'DM Serif Display', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+
+  /* Bootstrap variables */
+  --bs-body-font-family: var(--sans);
+  --bs-body-color: var(--ink);
+  --bs-body-bg: var(--paper);
+  --bs-primary: var(--green);
+  --bs-primary-rgb: 36, 76, 61;
+  --bs-border-color: var(--line);
 }
 
 body {
-  background-color: #f4f6fb;
-  color: #333;
+  font-family: var(--sans);
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.65;
 }
 
-/* Bootstrap's .btn-primary uses its own variables, so we set them here */
-.btn-primary {
-  --bs-btn-bg: #3b5bdb;
-  --bs-btn-border-color: #3b5bdb;
-  --bs-btn-hover-bg: #2f49b0;
-  --bs-btn-hover-border-color: #2f49b0;
-  --bs-btn-active-bg: #2f49b0;
-  --bs-btn-active-border-color: #2f49b0;
+/* Headings use the serif font */
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--serif);
+  font-weight: 400;
+  color: var(--ink);
+  letter-spacing: -0.02em;
 }
 
-.btn-outline-primary {
-  --bs-btn-color: #3b5bdb;
-  --bs-btn-border-color: #3b5bdb;
-  --bs-btn-hover-bg: #3b5bdb;
-  --bs-btn-hover-border-color: #3b5bdb;
+h1 {
+  font-size: 2.8rem;
+}
+
+h2 {
+  font-size: 2rem;
 }
 
 a {
-  color: #3b5bdb;
+  color: var(--green);
+}
+
+.container {
+  max-width: 1180px;
+}
+
+/* Buttons */
+.btn {
+  font-weight: 500;
+  border-radius: 4px;
+  padding: 0.5rem 1.25rem;
+}
+
+.btn-primary {
+  --bs-btn-bg: var(--green);
+  --bs-btn-border-color: var(--green);
+  --bs-btn-hover-bg: var(--green-deep);
+  --bs-btn-hover-border-color: var(--green-deep);
+  --bs-btn-active-bg: var(--green-deep);
+  --bs-btn-disabled-bg: var(--green);
+  --bs-btn-disabled-border-color: var(--green);
+}
+
+.btn-outline-primary {
+  --bs-btn-color: var(--green);
+  --bs-btn-border-color: var(--green);
+  --bs-btn-hover-bg: var(--green);
+  --bs-btn-hover-border-color: var(--green);
+}
+
+.btn-outline-secondary {
+  --bs-btn-color: var(--ink);
+  --bs-btn-border-color: var(--line);
+  --bs-btn-hover-bg: var(--cream);
+  --bs-btn-hover-color: var(--ink);
+  --bs-btn-hover-border-color: #cbd2c5;
 }
 
 /* Cards */
 .card {
-  border: 1px solid #e4e8f2;
-  border-radius: 10px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 6px;
 }
 
-.card-title {
-  color: var(--brand-dark);
-}
-
-/* Headings */
-h1,
-h2,
-h3,
-h4 {
-  color: var(--brand-dark);
-  font-weight: 600;
+/* Small label above a heading */
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #62735e;
 }
 
 /* Page hero */
 .hero {
-  background-color: var(--brand-soft);
-  border: 1px solid #dde3f7;
-  border-radius: 12px;
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: 8px;
 }
 
 /* Tags */
 .tag {
-  background-color: var(--brand-soft);
-  color: var(--brand-dark);
-  border-radius: 20px;
-  padding: 3px 10px;
-  font-size: 0.78rem;
-  margin-right: 4px;
+  display: inline-block;
+  background: var(--cream);
+  color: #56624f;
+  border-radius: 3px;
+  padding: 3px 9px;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  margin: 0 4px 4px 0;
+}
+
+/* Author initial circle */
+.avatar {
+  border-radius: 50%;
+  background: var(--green);
+  color: var(--paper);
+  font-family: var(--serif);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 /* Dashboard number */
 .stat-number {
-  color: #3b5bdb;
-  font-size: 2.6rem;
-  font-weight: 700;
+  font-family: var(--serif);
+  color: var(--green);
+  font-size: 3rem;
+  line-height: 1.1;
 }
 
-/* Navbar */
+/* Header */
 .navbar {
-  border-bottom: 3px solid #3b5bdb;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
 }
 
 .navbar-brand {
-  color: var(--brand-dark);
+  font-family: var(--serif);
+  font-size: 1.7rem;
+  color: var(--green);
 }
 
-.nav-link.router-link-active {
-  color: #3b5bdb;
-  font-weight: 600;
+.navbar .nav-link {
+  color: #6b7168;
+}
+
+.navbar .nav-link.router-link-active {
+  color: var(--green);
+  font-weight: 700;
 }
 
 /* Tables */
+.table {
+  --bs-table-bg: #fff;
+  border-color: var(--line);
+}
+
 .table thead th {
-  background-color: var(--brand-soft);
-  color: var(--brand-dark);
+  background: var(--cream);
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #62735e;
+  font-weight: 500;
+}
+
+/* Forms */
+.form-control:focus,
+.form-select:focus {
+  border-color: #9aae9f;
+  box-shadow: 0 0 0 3px #244c3d1a;
+}
+
+.form-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* Footer */
+.site-footer {
+  background: var(--green);
+  color: #d8e0d5;
 }

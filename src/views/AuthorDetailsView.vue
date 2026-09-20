@@ -8,26 +8,35 @@
   </div>
 
   <div v-else-if="selectedAuthor">
-    <div class="hero p-4 mb-4 d-flex align-items-center">
-      <div class="avatar me-3">{{ selectedAuthor.name.charAt(0).toUpperCase() }}</div>
-      <h2 class="mb-0">{{ selectedAuthor.name }}</h2>
+    <div class="hero p-5 mb-5">
+      <div class="d-flex align-items-center mb-4">
+        <div class="avatar me-4">{{ initial }}</div>
+
+        <div>
+          <p class="eyebrow mb-2">Author</p>
+          <h1 class="mb-0">{{ selectedAuthor.name }}</h1>
+        </div>
+      </div>
+
+      <p class="text-muted mb-0" style="max-width: 640px">
+        {{ selectedAuthor.bio || "No biography yet." }}
+      </p>
     </div>
 
-    <p class="text-muted">{{ selectedAuthor.bio }}</p>
-
-    <h4 class="mt-4 mb-3">Books by this author</h4>
+    <p class="eyebrow mb-2">On the shelf</p>
+    <h2 class="mb-4">Books by {{ selectedAuthor.name }}</h2>
 
     <div v-if="authorBooks.length === 0" class="alert alert-secondary">
       No books by this author yet.
     </div>
 
-    <div v-else class="row g-3">
+    <div v-else class="row g-4">
       <div class="col-12 col-sm-6 col-lg-3" v-for="book in authorBooks" :key="book.id">
         <BookCard :book="book" :author-name="selectedAuthor.name" />
       </div>
     </div>
 
-    <RouterLink to="/authors" class="btn btn-outline-primary mt-4">Back to Authors</RouterLink>
+    <RouterLink to="/authors" class="btn btn-outline-secondary mt-5">Back to Authors</RouterLink>
   </div>
 
   <div v-else class="alert alert-secondary">Author not found.</div>
@@ -50,6 +59,10 @@ const { books } = storeToRefs(bookStore);
 const { getAuthorById } = authorStore;
 const { getAllBooks } = bookStore;
 
+const initial = computed(() =>
+  selectedAuthor.value ? selectedAuthor.value.name.charAt(0).toUpperCase() : ""
+);
+
 const authorBooks = computed(() => {
   if (!selectedAuthor.value) return [];
   return books.value.filter((book) => book.authorId === selectedAuthor.value.id);
@@ -69,16 +82,8 @@ watch(() => route.params.id, loadData);
 
 <style scoped>
 .avatar {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background-color: #3b5bdb;
-  color: white;
-  font-size: 1.4rem;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+  width: 70px;
+  height: 70px;
+  font-size: 1.8rem;
 }
 </style>

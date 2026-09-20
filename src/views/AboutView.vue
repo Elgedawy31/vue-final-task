@@ -1,12 +1,14 @@
 <template>
-  <h2 class="mb-3">About</h2>
+  <p class="eyebrow mb-2">About</p>
+  <h2 class="mb-3">A small library, built with Vue.</h2>
 
-  <p class="text-muted mb-4">
+  <p class="text-muted mb-5" style="max-width: 640px">
     This is a small single page application for browsing books and authors. It was built with
     Vue 3, Vue Router, Pinia, and Bootstrap, and it reads its data from a json-server mock API.
   </p>
 
-  <h4 class="mb-3">Frequently Asked Questions</h4>
+  <p class="eyebrow mb-2">Questions</p>
+  <h4 class="mb-4">Frequently Asked Questions</h4>
 
   <div class="accordion" id="faqAccordion">
     <div class="accordion-item" v-for="(item, index) in faq" :key="index">
@@ -55,8 +57,15 @@ const faq = [
 </script>
 
 <style scoped>
-.accordion-button:not(.collapsed) {
-  background-color: #eef1fb;
-  color: #2b3a67;
+.accordion {
+  --bs-accordion-border-color: var(--line);
+  --bs-accordion-active-bg: var(--cream);
+  --bs-accordion-active-color: var(--ink);
+  --bs-accordion-btn-focus-box-shadow: none;
+  max-width: 760px;
+}
+
+.accordion-button {
+  font-weight: 500;
 }
 </style>

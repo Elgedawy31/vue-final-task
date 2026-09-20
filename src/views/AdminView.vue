@@ -1,28 +1,32 @@
 <template>
+  <p class="eyebrow mb-2">Admin</p>
   <h2 class="mb-4">Dashboard</h2>
 
-  <div class="row g-3 mb-4">
+  <div class="row g-4 mb-5">
     <div class="col-md-6">
-      <div class="card text-center">
+      <div class="card h-100">
         <div class="card-body">
-          <div class="stat-number">{{ books.length }}</div>
-          <p class="text-muted mb-0">Books</p>
+          <div class="stat-number mb-1">{{ books.length }}</div>
+          <p class="eyebrow mb-3">Books</p>
+          <RouterLink to="/admin/books" class="btn btn-outline-secondary btn-sm">
+            Manage Books
+          </RouterLink>
         </div>
       </div>
     </div>
 
     <div class="col-md-6">
-      <div class="card text-center">
+      <div class="card h-100">
         <div class="card-body">
-          <div class="stat-number">{{ authors.length }}</div>
-          <p class="text-muted mb-0">Authors</p>
+          <div class="stat-number mb-1">{{ authors.length }}</div>
+          <p class="eyebrow mb-3">Authors</p>
+          <RouterLink to="/admin/authors" class="btn btn-outline-secondary btn-sm">
+            Manage Authors
+          </RouterLink>
         </div>
       </div>
     </div>
   </div>
-
-  <RouterLink to="/admin/books" class="btn btn-primary me-2">Manage Books</RouterLink>
-  <RouterLink to="/admin/authors" class="btn btn-primary">Manage Authors</RouterLink>
 </template>
 
 <script setup>
