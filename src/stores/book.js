@@ -1,7 +1,8 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
+import { API_URL } from "../config.js";
 
-const API = "http://localhost:3000/books";
+const API = `${API_URL}/books`;
 
 export const useBookStore = defineStore("book", () => {
   // State

@@ -110,6 +110,7 @@ import { useRoute, useRouter } from "vue-router";
 import { useBookStore } from "../stores/book.js";
 import { useAuthorStore } from "../stores/author.js";
 import { useToastStore } from "../stores/toast.js";
+import { API_URL } from "../config.js";
 
 const route = useRoute();
 const router = useRouter();
@@ -201,7 +202,7 @@ const isValid = computed(() => Object.keys(errors.value).length === 0);
 // The spec asks us to confirm the author exists by calling the API
 // and checking the status code before we save.
 const authorExists = async (authorId) => {
-  const response = await fetch(`http://localhost:3000/authors/${authorId}`);
+  const response = await fetch(`${API_URL}/authors/${authorId}`);
   return response.ok;
 };
 

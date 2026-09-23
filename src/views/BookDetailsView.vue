@@ -38,12 +38,20 @@
   </div>
 
   <div v-else class="alert alert-secondary">Book not found.</div>
+
+  <ChatWidget
+    v-if="selectedBook"
+    entity-type="book"
+    :entity-id="selectedBook.id"
+    :name="selectedBook.title"
+  />
 </template>
 
 <script setup>
 import { computed, onMounted, watch } from "vue";
 import { storeToRefs } from "pinia";
 import { useRoute } from "vue-router";
+import ChatWidget from "../components/ChatWidget.vue";
 import { useBookStore } from "../stores/book.js";
 import { useAuthorStore } from "../stores/author.js";
 
@@ -75,8 +83,8 @@ watch(() => route.params.id, loadData);
 
 <style scoped>
 .book-art {
-  background: #efede6;
-  border: 1px solid #e4e6dc;
+  background: #f0e8ea;
+  border: 1px solid #e8dfe1;
   border-radius: 6px;
   padding: 32px;
   display: flex;
@@ -86,7 +94,7 @@ watch(() => route.params.id, loadData);
 
 .book-cover {
   max-width: 100%;
-  box-shadow: 6px 8px 15px #222b241e;
+  box-shadow: 6px 8px 15px #2a1f221e;
   border-radius: 1px 3px 3px 1px;
 }
 </style>

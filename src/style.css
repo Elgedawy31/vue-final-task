@@ -26,13 +26,13 @@
 
 /* Colors and fonts used across the app */
 :root {
-  --paper: #faf9f5;
-  --cream: #f2f0e8;
-  --green: #244c3d;
-  --green-deep: #183b2f;
-  --ink: #283b32;
-  --muted: #737b71;
-  --line: #e4e6dc;
+  --paper: #faf8f6;
+  --cream: #f3edee;
+  --wine: #5c2233;
+  --wine-deep: #431825;
+  --ink: #33262a;
+  --muted: #766b6f;
+  --line: #e8dfe1;
 
   --serif: 'DM Serif Display', Georgia, serif;
   --sans: 'DM Sans', system-ui, sans-serif;
@@ -41,8 +41,8 @@
   --bs-body-font-family: var(--sans);
   --bs-body-color: var(--ink);
   --bs-body-bg: var(--paper);
-  --bs-primary: var(--green);
-  --bs-primary-rgb: 36, 76, 61;
+  --bs-primary: var(--wine);
+  --bs-primary-rgb: 92, 34, 51;
   --bs-border-color: var(--line);
 }
 
@@ -74,7 +74,7 @@ h2 {
 }
 
 a {
-  color: var(--green);
+  color: var(--wine);
 }
 
 .container {
@@ -89,20 +89,20 @@ a {
 }
 
 .btn-primary {
-  --bs-btn-bg: var(--green);
-  --bs-btn-border-color: var(--green);
-  --bs-btn-hover-bg: var(--green-deep);
-  --bs-btn-hover-border-color: var(--green-deep);
-  --bs-btn-active-bg: var(--green-deep);
-  --bs-btn-disabled-bg: var(--green);
-  --bs-btn-disabled-border-color: var(--green);
+  --bs-btn-bg: var(--wine);
+  --bs-btn-border-color: var(--wine);
+  --bs-btn-hover-bg: var(--wine-deep);
+  --bs-btn-hover-border-color: var(--wine-deep);
+  --bs-btn-active-bg: var(--wine-deep);
+  --bs-btn-disabled-bg: var(--wine);
+  --bs-btn-disabled-border-color: var(--wine);
 }
 
 .btn-outline-primary {
-  --bs-btn-color: var(--green);
-  --bs-btn-border-color: var(--green);
-  --bs-btn-hover-bg: var(--green);
-  --bs-btn-hover-border-color: var(--green);
+  --bs-btn-color: var(--wine);
+  --bs-btn-border-color: var(--wine);
+  --bs-btn-hover-bg: var(--wine);
+  --bs-btn-hover-border-color: var(--wine);
 }
 
 .btn-outline-secondary {
@@ -110,7 +110,7 @@ a {
   --bs-btn-border-color: var(--line);
   --bs-btn-hover-bg: var(--cream);
   --bs-btn-hover-color: var(--ink);
-  --bs-btn-hover-border-color: #cbd2c5;
+  --bs-btn-hover-border-color: #d3c0c5;
 }
 
 /* Cards */
@@ -126,7 +126,7 @@ a {
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #62735e;
+  color: #85656d;
 }
 
 /* Page hero */
@@ -140,7 +140,7 @@ a {
 .tag {
   display: inline-block;
   background: var(--cream);
-  color: #56624f;
+  color: #6d5059;
   border-radius: 3px;
   padding: 3px 9px;
   font-size: 0.75rem;
@@ -151,7 +151,7 @@ a {
 /* Author initial circle */
 .avatar {
   border-radius: 50%;
-  background: var(--green);
+  background: var(--wine);
   color: var(--paper);
   font-family: var(--serif);
   display: flex;
@@ -163,7 +163,7 @@ a {
 /* Dashboard number */
 .stat-number {
   font-family: var(--serif);
-  color: var(--green);
+  color: var(--wine);
   font-size: 3rem;
   line-height: 1.1;
 }
@@ -177,15 +177,15 @@ a {
 .navbar-brand {
   font-family: var(--serif);
   font-size: 1.7rem;
-  color: var(--green);
+  color: var(--wine);
 }
 
 .navbar .nav-link {
-  color: #6b7168;
+  color: #71656a;
 }
 
 .navbar .nav-link.router-link-active {
-  color: var(--green);
+  color: var(--wine);
   font-weight: 700;
 }
 
@@ -201,15 +201,15 @@ a {
   font-size: 11px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #62735e;
+  color: #85656d;
   font-weight: 500;
 }
 
 /* Forms */
 .form-control:focus,
 .form-select:focus {
-  border-color: #9aae9f;
-  box-shadow: 0 0 0 3px #244c3d1a;
+  border-color: #c4a3ac;
+  box-shadow: 0 0 0 3px #5c22331f;
 }
 
 .form-label {
@@ -219,6 +219,16 @@ a {
 
 /* Footer */
 .site-footer {
-  background: var(--green);
-  color: #d8e0d5;
+  background: var(--wine);
+  color: #e6d2d8;
+}
+
+.site-footer a {
+  color: #e3cdd4;
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: #fff;
+  text-decoration: underline;
 }

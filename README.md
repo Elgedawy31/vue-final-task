@@ -28,6 +28,23 @@ npm run dev
 
 The app runs on http://localhost:5173 and the API on http://localhost:3000.
 
+## Reading assistant
+
+Each book and author page has a chat button that answers questions about that
+book or author using Google Gemini.
+
+To turn it on, copy `.env.example` to `.env` and add your key:
+
+```
+VITE_GEMINI_API_KEY=your-key-here
+```
+
+Get a key from https://aistudio.google.com/apikey, then restart `npm run dev`.
+Git ignores `.env`, so the key stays on your machine. Without a key the rest of
+the app works normally and the chat shows a short message instead.
+
+The model and the API address are set in `src/config.js`.
+
 ## Admin login
 
 - Username: `admin`

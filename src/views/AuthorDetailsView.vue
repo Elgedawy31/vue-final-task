@@ -40,6 +40,13 @@
   </div>
 
   <div v-else class="alert alert-secondary">Author not found.</div>
+
+  <ChatWidget
+    v-if="selectedAuthor"
+    entity-type="author"
+    :entity-id="selectedAuthor.id"
+    :name="selectedAuthor.name"
+  />
 </template>
 
 <script setup>
@@ -47,6 +54,7 @@ import { computed, onMounted, watch } from "vue";
 import { storeToRefs } from "pinia";
 import { useRoute } from "vue-router";
 import BookCard from "../components/BookCard.vue";
+import ChatWidget from "../components/ChatWidget.vue";
 import { useAuthorStore } from "../stores/author.js";
 import { useBookStore } from "../stores/book.js";
 

@@ -1,11 +1,13 @@
 <template>
-  <Navbar />
+  <div class="page">
+    <Navbar />
 
-  <div class="container">
-    <RouterView />
+    <main class="container flex-grow-1">
+      <RouterView />
+    </main>
+
+    <Footer />
   </div>
-
-  <Footer />
 
   <Toast />
 </template>
@@ -15,3 +17,12 @@ import Navbar from "./components/Navbar.vue";
 import Footer from "./components/Footer.vue";
 import Toast from "./components/Toast.vue";
 </script>
+
+<style scoped>
+/* Keeps the footer at the bottom even on short pages */
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+</style>

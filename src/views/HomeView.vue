@@ -119,7 +119,7 @@ onMounted(loadData);
 
 <style scoped>
 .hero-counts {
-  border-left: 1px solid #dcdcd0;
+  border-left: 1px solid #e0d3d7;
   padding-left: 2.5rem;
 }
 </style>

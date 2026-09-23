@@ -37,8 +37,8 @@ defineProps({
 
 <style scoped>
 .book-art {
-  background: #efede6;
-  border-bottom: 1px solid #e4e6dc;
+  background: #f0e8ea;
+  border-bottom: 1px solid #e8dfe1;
   padding: 24px;
   height: 230px;
   display: flex;
@@ -49,7 +49,7 @@ defineProps({
 .book-cover {
   max-height: 100%;
   max-width: 100%;
-  box-shadow: 6px 8px 15px #222b241e;
+  box-shadow: 6px 8px 15px #2a1f221e;
   border-radius: 1px 3px 3px 1px;
 }
 </style>
