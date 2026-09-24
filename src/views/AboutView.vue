@@ -1,32 +1,27 @@
 <template>
-  <div class="row g-5">
-    <!-- Left: what it is -->
-    <div class="col-lg-5">
-      <p class="eyebrow mb-2">About</p>
+  <div class="about">
+    <!-- Intro -->
+    <section class="about-intro text-center">
+      <p class="eyebrow mb-3">About</p>
       <h1 class="mb-4">A shelf worth browsing.</h1>
 
-      <p class="lead-text text-muted">
+      <p class="lead-text text-muted mx-auto">
         Folio is a small library of books and the people who wrote them. Every
         book is tied to its author, so you can start with a title you like and
         end up somewhere you did not expect.
       </p>
 
-      <p class="text-muted">
+      <p class="text-muted mx-auto mb-0">
         The collection is kept short on purpose. Nothing here gets buried, and
         you can look through the whole shelf in a few minutes.
       </p>
+    </section>
 
-      <div class="mt-4">
-        <RouterLink to="/books" class="btn btn-primary me-2">Browse Books</RouterLink>
-        <RouterLink to="/authors" class="btn btn-outline-secondary">Authors</RouterLink>
-      </div>
-    </div>
+    <!-- Questions -->
+    <section class="about-faq">
+      <p class="eyebrow text-center mb-4">Questions</p>
 
-    <!-- Right: questions -->
-    <div class="col-lg-6 offset-lg-1">
-      <p class="eyebrow mb-3">Questions</p>
-
-      <div class="accordion" id="faq">
+      <div class="accordion mx-auto" id="faq">
         <div class="accordion-item" v-for="item in faq" :key="item.id">
           <h2 class="accordion-header">
             <button
@@ -50,7 +45,13 @@
           </div>
         </div>
       </div>
-    </div>
+    </section>
+
+    <!-- Links out -->
+    <section class="about-links text-center">
+      <RouterLink to="/books" class="btn btn-primary me-2">Browse Books</RouterLink>
+      <RouterLink to="/authors" class="btn btn-outline-secondary">Authors</RouterLink>
+    </section>
   </div>
 </template>
 
@@ -84,12 +85,36 @@ const faq = [
 </script>
 
 <style scoped>
+/* Break out of the 1180px page container so the page fills the screen */
+.about {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  margin-left: -50vw;
+}
+
+.about-intro {
+  background: var(--cream);
+  border-bottom: 1px solid var(--line);
+  padding: 72px 24px;
+}
+
 .lead-text {
-  font-size: 1.1rem;
-  line-height: 1.75;
+  font-size: 1.15rem;
+  line-height: 1.8;
+  max-width: 660px;
+}
+
+.about-intro p:last-child {
+  max-width: 660px;
+}
+
+.about-faq {
+  padding: 64px 24px;
 }
 
 .accordion {
+  max-width: 760px;
   --bs-accordion-border-color: var(--line);
   --bs-accordion-active-bg: var(--cream);
   --bs-accordion-active-color: var(--ink);
@@ -99,5 +124,11 @@ const faq = [
 .accordion-button {
   font-weight: 500;
   font-size: 0.95rem;
+}
+
+.about-links {
+  background: var(--cream);
+  border-top: 1px solid var(--line);
+  padding: 56px 24px;
 }
 </style>

@@ -51,6 +51,9 @@ body {
   background: var(--paper);
   color: var(--ink);
   line-height: 1.65;
+  /* Full-width sections use 100vw, which is wider than the page when a
+     scrollbar is showing. Stop that from adding a sideways scrollbar. */
+  overflow-x: hidden;
 }
 
 /* Headings use the serif font */
