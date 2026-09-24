@@ -1,7 +1,7 @@
 <template>
   <button
     v-if="!open"
-    class="chat-launcher btn btn-primary"
+    class="chat-launcher btn"
     :aria-label="`Ask about this ${entityType}`"
     :title="`Ask about this ${entityType}`"
     @click="open = true"
@@ -235,7 +235,19 @@ const send = async (question) => {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 26px #38262a40;
+  color: var(--wine);
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: 0 6px 20px #38262a1f;
+  transition: background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.chat-launcher:hover,
+.chat-launcher:focus-visible {
+  color: var(--wine);
+  background: var(--cream);
+  border-color: #d3c0c5;
+  box-shadow: 0 8px 24px #38262a2e;
 }
 
 .chat-panel {
