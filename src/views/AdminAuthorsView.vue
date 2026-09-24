@@ -53,9 +53,11 @@ import { storeToRefs } from "pinia";
 import DataState from "../components/DataState.vue";
 import { useAuthorStore } from "../stores/author.js";
 import { useToastStore } from "../stores/toast.js";
+import { useConfirmStore } from "../stores/confirm.js";
 
 const authorStore = useAuthorStore();
 const toastStore = useToastStore();
+const { askConfirm } = useConfirmStore();
 
 const { authors, loading, error } = storeToRefs(authorStore);
 const { getAllAuthors, deleteAuthor } = authorStore;
@@ -68,7 +70,11 @@ const shortBio = (bio) => {
 };
 
 const handleDelete = async (author) => {
-  if (!confirm(`Delete "${author.name}"?`)) return;
+  const ok = await askConfirm({
+    title: "Delete author?",
+    message: `"${author.name}" will be removed for good.`,
+  });
+  if (!ok) return;
 
   try {
     await deleteAuthor(author.id);

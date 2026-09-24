@@ -53,10 +53,12 @@ import DataState from "../components/DataState.vue";
 import { useBookStore } from "../stores/book.js";
 import { useAuthorStore } from "../stores/author.js";
 import { useToastStore } from "../stores/toast.js";
+import { useConfirmStore } from "../stores/confirm.js";
 
 const bookStore = useBookStore();
 const authorStore = useAuthorStore();
 const toastStore = useToastStore();
+const { askConfirm } = useConfirmStore();
 
 const { books, loading, error } = storeToRefs(bookStore);
 const { authors } = storeToRefs(authorStore);
@@ -70,7 +72,11 @@ const getAuthorName = (authorId) => {
 };
 
 const handleDelete = async (book) => {
-  if (!confirm(`Delete "${book.title}"?`)) return;
+  const ok = await askConfirm({
+    title: "Delete book?",
+    message: `"${book.title}" will be removed for good.`,
+  });
+  if (!ok) return;
 
   try {
     await deleteBook(book.id);
