@@ -32,24 +32,31 @@
     </div>
   </div>
 
-  <!-- Features -->
+  <!-- Stats and genre filters -->
   <div class="features mb-5">
     <div class="row g-0">
-      <div
-        class="col-md-4"
-        v-for="(feature, index) in features"
-        :key="feature.title"
-      >
-        <div class="feature h-100">
-          <div class="d-flex align-items-baseline gap-3 mb-2">
-            <span class="feature-number">0{{ index + 1 }}</span>
-            <p class="eyebrow mb-0">{{ feature.label }}</p>
-          </div>
-
-          <h4 class="mb-2">{{ feature.title }}</h4>
-          <p class="text-muted small mb-0">{{ feature.text }}</p>
+      <div class="col-6 col-lg-3" v-for="stat in stats" :key="stat.label">
+        <div class="stat-cell h-100">
+          <div class="stat-value">{{ stat.value }}</div>
+          <p class="eyebrow mb-0">{{ stat.label }}</p>
         </div>
       </div>
+    </div>
+
+    <div class="genre-bar">
+      <p class="eyebrow mb-0 me-1">Browse by genre</p>
+
+      <RouterLink
+        v-for="genre in topGenres"
+        :key="genre.name"
+        :to="`/books?tag=${encodeURIComponent(genre.name)}`"
+        class="genre-pill"
+      >
+        {{ genre.name }}
+        <span class="genre-count">{{ genre.count }}</span>
+      </RouterLink>
+
+      <RouterLink to="/books" class="genre-pill genre-all">All books</RouterLink>
     </div>
   </div>
 
@@ -94,23 +101,38 @@ const { authors } = storeToRefs(authorStore);
 const { getAllBooks } = bookStore;
 const { getAllAuthors } = authorStore;
 
-const features = [
-  {
-    label: "Search",
-    title: "Find a book",
-    text: "Search the catalogue by title or narrow the list down to a single author.",
-  },
-  {
-    label: "Authors",
-    title: "Meet the writers",
-    text: "Read a short biography and see everything an author has on the shelf.",
-  },
-  {
-    label: "Admin",
-    title: "Keep it tidy",
-    text: "Add, edit, and remove books and authors from the admin area.",
-  },
-];
+const stats = computed(() => [
+  { value: books.value.length, label: "Books" },
+  { value: authors.value.length, label: "Authors" },
+  { value: genreCount.value, label: "Genres" },
+  { value: yearSpan.value, label: "Years covered" },
+]);
+
+// Count how many books carry each tag
+const tagCounts = computed(() => {
+  const counts = {};
+  books.value.forEach((book) => {
+    (book.tags || []).forEach((tag) => {
+      counts[tag] = (counts[tag] || 0) + 1;
+    });
+  });
+  return counts;
+});
+
+const genreCount = computed(() => Object.keys(tagCounts.value).length);
+
+const topGenres = computed(() =>
+  Object.keys(tagCounts.value)
+    .map((name) => ({ name, count: tagCounts.value[name] }))
+    .sort((a, b) => b.count - a.count)
+    .slice(0, 6)
+);
+
+const yearSpan = computed(() => {
+  const years = books.value.map((book) => book.year).filter(Boolean);
+  if (years.length === 0) return 0;
+  return Math.max(...years) - Math.min(...years);
+});
 
 const recentBooks = computed(() => books.value.slice(0, 4));
 
@@ -135,31 +157,63 @@ onMounted(loadData);
   overflow: hidden;
 }
 
-.feature {
-  padding: 28px 30px;
+.stat-cell {
+  padding: 22px 26px;
   border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
 
-/* No divider after the last column */
-.col-md-4:last-child .feature {
+.col-lg-3:last-child .stat-cell {
   border-right: 0;
 }
 
-.feature-number {
+.stat-value {
   font-family: var(--serif);
-  font-size: 1.1rem;
+  font-size: 2.1rem;
+  line-height: 1.1;
   color: var(--wine);
 }
 
-/* Stack on small screens: dividers go horizontal */
-@media (max-width: 767.98px) {
-  .feature {
-    border-right: 0;
-    border-bottom: 1px solid var(--line);
-  }
+.genre-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 18px 26px;
+}
 
-  .col-md-4:last-child .feature {
-    border-bottom: 0;
+.genre-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 13px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  font-size: 0.82rem;
+  color: var(--ink);
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
+.genre-pill:hover {
+  background: var(--cream);
+  border-color: #d3c0c5;
+  color: var(--wine);
+}
+
+.genre-count {
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.genre-all {
+  background: var(--cream);
+}
+
+/* On phones two stats sit per row, so only the right-hand one needs no border */
+@media (max-width: 991.98px) {
+  .col-6:nth-child(even) .stat-cell {
+    border-right: 0;
   }
 }
 
