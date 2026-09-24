@@ -33,12 +33,22 @@
   </div>
 
   <!-- Features -->
-  <div class="row g-4 mb-5">
-    <div class="col-md-4" v-for="feature in features" :key="feature.title">
-      <div class="h-100 pe-3">
-        <p class="eyebrow mb-2">{{ feature.label }}</p>
-        <h4 class="mb-2">{{ feature.title }}</h4>
-        <p class="text-muted small mb-0">{{ feature.text }}</p>
+  <div class="features mb-5">
+    <div class="row g-0">
+      <div
+        class="col-md-4"
+        v-for="(feature, index) in features"
+        :key="feature.title"
+      >
+        <div class="feature h-100">
+          <div class="d-flex align-items-baseline gap-3 mb-2">
+            <span class="feature-number">0{{ index + 1 }}</span>
+            <p class="eyebrow mb-0">{{ feature.label }}</p>
+          </div>
+
+          <h4 class="mb-2">{{ feature.title }}</h4>
+          <p class="text-muted small mb-0">{{ feature.text }}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -118,6 +128,41 @@ onMounted(loadData);
 </script>
 
 <style scoped>
+.features {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.feature {
+  padding: 28px 30px;
+  border-right: 1px solid var(--line);
+}
+
+/* No divider after the last column */
+.col-md-4:last-child .feature {
+  border-right: 0;
+}
+
+.feature-number {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  color: var(--wine);
+}
+
+/* Stack on small screens: dividers go horizontal */
+@media (max-width: 767.98px) {
+  .feature {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .col-md-4:last-child .feature {
+    border-bottom: 0;
+  }
+}
+
 .hero-counts {
   border-left: 1px solid #e0d3d7;
   padding-left: 2.5rem;
