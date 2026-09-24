@@ -1,10 +1,17 @@
 <template>
-  <!-- Launcher button -->
-  <button v-if="!open" class="chat-launcher btn btn-primary" @click="open = true">
-    Ask about this {{ entityType }}
+  <button
+    v-if="!open"
+    class="chat-launcher btn btn-primary"
+    :aria-label="`Ask about this ${entityType}`"
+    :title="`Ask about this ${entityType}`"
+    @click="open = true"
+  >
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M10 3l1.9 5.1L17 10l-5.1 1.9L10 17l-1.9-5.1L3 10l5.1-1.9L10 3z" />
+      <path d="M18 14l.9 2.1L21 17l-2.1.9L18 20l-.9-2.1L15 17l2.1-.9L18 14z" />
+    </svg>
   </button>
 
-  <!-- Chat panel -->
   <div v-else class="chat-panel card">
     <div class="chat-header d-flex align-items-center justify-content-between">
       <div>
@@ -15,7 +22,6 @@
       <button class="btn-close" aria-label="Close chat" @click="open = false"></button>
     </div>
 
-    <!-- Messages -->
     <div class="chat-messages" ref="scrollArea">
       <div v-if="messages.length === 0" class="text-muted small">
         <p>Ask me anything about this {{ entityType }}.</p>
@@ -40,7 +46,6 @@
       <div v-if="error" class="alert alert-danger py-2 small mb-0">{{ error }}</div>
     </div>
 
-    <!-- Input -->
     <form class="chat-input" @submit.prevent="send()">
       <div class="d-flex gap-2">
         <input
@@ -113,7 +118,6 @@ const API = API_URL;
 const KEY = GEMINI_API_KEY;
 const MODEL = GEMINI_MODEL;
 
-// Collect the book/author details so the assistant answers from our own data
 const getContext = async () => {
   if (props.entityType === "book") {
     const bookResponse = await fetch(`${API}/books/${props.entityId}`);
@@ -224,6 +228,14 @@ const send = async (question) => {
   right: 24px;
   bottom: 24px;
   z-index: 1030;
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 26px #38262a40;
 }
 
 .chat-panel {
@@ -243,7 +255,7 @@ const send = async (question) => {
 
 .chat-name {
   font-family: var(--serif);
-  font-size: 1.05rem;
+  font-size: 17px;
 }
 
 .chat-messages {
@@ -253,7 +265,7 @@ const send = async (question) => {
 }
 
 .chat-text {
-  font-size: 0.875rem;
+  font-size: 14px;
   white-space: pre-wrap;
 }
 

@@ -5,7 +5,6 @@ import { API_URL } from "../config.js";
 const API = `${API_URL}/authors`;
 
 export const useAuthorStore = defineStore("author", () => {
-  // State
   const authors = ref([]);
   const loading = ref(false);
   const error = ref(false);
@@ -14,7 +13,6 @@ export const useAuthorStore = defineStore("author", () => {
   const selectedLoading = ref(false);
   const selectedError = ref(false);
 
-  // Actions
   const getAllAuthors = async () => {
     try {
       loading.value = true;

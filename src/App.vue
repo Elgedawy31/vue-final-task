@@ -19,7 +19,6 @@ import Toast from "./components/Toast.vue";
 </script>
 
 <style scoped>
-/* Keeps the footer at the bottom even on short pages */
 .page {
   min-height: 100vh;
   display: flex;

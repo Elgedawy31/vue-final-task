@@ -1,5 +1,4 @@
 <template>
-  <!-- Hero -->
   <div class="hero p-5 mb-5">
     <div class="row align-items-center g-4">
       <div class="col-lg-7">
@@ -32,7 +31,6 @@
     </div>
   </div>
 
-  <!-- Stats and genre filters -->
   <div class="features mb-5">
     <div class="row g-0">
       <div class="col-6 col-lg-3" v-for="stat in stats" :key="stat.label">
@@ -60,7 +58,6 @@
     </div>
   </div>
 
-  <!-- Recent books -->
   <div class="d-flex justify-content-between align-items-end mb-4">
     <div>
       <p class="eyebrow mb-2">Latest additions</p>
@@ -108,7 +105,6 @@ const stats = computed(() => [
   { value: yearSpan.value, label: "Years covered" },
 ]);
 
-// Count how many books carry each tag
 const tagCounts = computed(() => {
   const counts = {};
   books.value.forEach((book) => {
@@ -169,7 +165,7 @@ onMounted(loadData);
 
 .stat-value {
   font-family: var(--serif);
-  font-size: 2.1rem;
+  font-size: 34px;
   line-height: 1.1;
   color: var(--wine);
 }
@@ -189,7 +185,7 @@ onMounted(loadData);
   padding: 5px 13px;
   border: 1px solid var(--line);
   border-radius: 20px;
-  font-size: 0.82rem;
+  font-size: 13px;
   color: var(--ink);
   text-decoration: none;
   text-transform: capitalize;
@@ -203,14 +199,13 @@ onMounted(loadData);
 
 .genre-count {
   color: var(--muted);
-  font-size: 0.75rem;
+  font-size: 12px;
 }
 
 .genre-all {
   background: var(--cream);
 }
 
-/* On phones two stats sit per row, so only the right-hand one needs no border */
 @media (max-width: 991.98px) {
   .col-6:nth-child(even) .stat-cell {
     border-right: 0;
@@ -219,6 +214,6 @@ onMounted(loadData);
 
 .hero-counts {
   border-left: 1px solid #e0d3d7;
-  padding-left: 2.5rem;
+  padding-left: 40px;
 }
 </style>

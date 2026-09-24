@@ -38,7 +38,6 @@ const router = createRouter({
   ],
 });
 
-// Guard: admin pages need login
 router.beforeEach((to) => {
   const authStore = useAuthStore();
 

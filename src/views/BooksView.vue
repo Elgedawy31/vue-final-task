@@ -2,7 +2,6 @@
   <p class="eyebrow mb-2">The collection</p>
   <h2 class="mb-4">Books</h2>
 
-  <!-- Search and filter -->
   <div class="card mb-4">
     <div class="card-body row g-3">
       <div class="col-md-6">
@@ -82,7 +81,6 @@ const search = ref("");
 const selectedAuthorId = ref("");
 const selectedTag = ref(route.query.tag || "");
 
-// Every tag used in the collection, sorted and without duplicates
 const allTags = computed(() => {
   const tags = new Set();
   books.value.forEach((book) => (book.tags || []).forEach((tag) => tags.add(tag)));

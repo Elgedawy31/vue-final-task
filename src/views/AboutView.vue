@@ -1,6 +1,5 @@
 <template>
   <div class="about">
-    <!-- Intro -->
     <section class="about-intro text-center">
       <p class="eyebrow mb-3">About</p>
       <h1 class="mb-4">A shelf worth browsing.</h1>
@@ -17,7 +16,6 @@
       </p>
     </section>
 
-    <!-- Questions -->
     <section class="about-faq">
       <p class="eyebrow text-center mb-4">Questions</p>
 
@@ -47,7 +45,6 @@
       </div>
     </section>
 
-    <!-- Links out -->
     <section class="about-links text-center">
       <RouterLink to="/books" class="btn btn-primary me-2">Browse Books</RouterLink>
       <RouterLink to="/authors" class="btn btn-outline-secondary">Authors</RouterLink>
@@ -85,7 +82,6 @@ const faq = [
 </script>
 
 <style scoped>
-/* Break out of the 1180px page container so the page fills the screen */
 .about {
   width: 100vw;
   position: relative;
@@ -100,7 +96,7 @@ const faq = [
 }
 
 .lead-text {
-  font-size: 1.15rem;
+  font-size: 18px;
   line-height: 1.8;
   max-width: 660px;
 }
@@ -123,7 +119,7 @@ const faq = [
 
 .accordion-button {
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 15px;
 }
 
 .about-links {

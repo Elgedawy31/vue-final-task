@@ -5,7 +5,6 @@ import { API_URL } from "../config.js";
 const API = `${API_URL}/books`;
 
 export const useBookStore = defineStore("book", () => {
-  // State
   const books = ref([]);
   const loading = ref(false);
   const error = ref(false);
@@ -14,7 +13,6 @@ export const useBookStore = defineStore("book", () => {
   const selectedLoading = ref(false);
   const selectedError = ref(false);
 
-  // Actions
   const getAllBooks = async () => {
     try {
       loading.value = true;

@@ -2,7 +2,6 @@
   <footer class="site-footer pt-5 pb-4 mt-5">
     <div class="container">
       <div class="row g-4">
-        <!-- Brand -->
         <div class="col-lg-5">
           <p class="footer-brand mb-2">Folio</p>
           <p class="small mb-0" style="max-width: 320px">
@@ -10,7 +9,6 @@
           </p>
         </div>
 
-        <!-- Browse -->
         <div class="col-6 col-lg-3">
           <p class="footer-heading mb-3">Browse</p>
           <ul class="list-unstyled small mb-0">
@@ -21,7 +19,6 @@
           </ul>
         </div>
 
-        <!-- Admin -->
         <div class="col-6 col-lg-4">
           <p class="footer-heading mb-3">Admin</p>
           <ul class="list-unstyled small mb-0">
@@ -43,13 +40,13 @@
 <style scoped>
 .footer-brand {
   font-family: var(--serif);
-  font-size: 1.6rem;
+  font-size: 26px;
   color: #fff;
 }
 
 .footer-heading {
   font-size: 11px;
-  letter-spacing: 0.18em;
+  letter-spacing: 2px;
   text-transform: uppercase;
   color: #caa5b0;
 }

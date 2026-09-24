@@ -50,6 +50,6 @@ const shortBio = computed(() => {
 .avatar {
   width: 46px;
   height: 46px;
-  font-size: 1.2rem;
+  font-size: 19px;
 }
 </style>

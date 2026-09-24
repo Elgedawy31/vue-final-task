@@ -92,6 +92,6 @@ watch(() => route.params.id, loadData);
 .avatar {
   width: 70px;
   height: 70px;
-  font-size: 1.8rem;
+  font-size: 29px;
 }
 </style>

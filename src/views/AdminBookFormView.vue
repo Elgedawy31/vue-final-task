@@ -4,7 +4,6 @@
 
   <form @submit.prevent="handleSubmit" novalidate class="card">
     <div class="card-body p-4">
-      <!-- Title -->
       <div class="mb-3">
         <label class="form-label" for="title">Title</label>
         <input
@@ -18,7 +17,6 @@
         <div class="invalid-feedback">{{ errors.title }}</div>
       </div>
 
-      <!-- Author -->
       <div class="mb-3">
         <label class="form-label" for="authorId">Author</label>
         <select
@@ -36,7 +34,6 @@
         <div class="invalid-feedback">{{ errors.authorId }}</div>
       </div>
 
-      <!-- Year -->
       <div class="mb-3">
         <label class="form-label" for="year">Year</label>
         <input
@@ -50,7 +47,6 @@
         <div class="invalid-feedback">{{ errors.year }}</div>
       </div>
 
-      <!-- Tags -->
       <div class="mb-3">
         <label class="form-label" for="tags">Tags</label>
         <input
@@ -65,7 +61,6 @@
         <div class="invalid-feedback">{{ errors.tags }}</div>
       </div>
 
-      <!-- Cover URL -->
       <div class="mb-3">
         <label class="form-label" for="coverUrl">Cover URL</label>
         <input
@@ -79,7 +74,6 @@
         <div class="invalid-feedback">{{ errors.coverUrl }}</div>
       </div>
 
-      <!-- Description -->
       <div class="mb-3">
         <label class="form-label" for="description">Description</label>
         <textarea
@@ -199,8 +193,6 @@ const errors = computed(() => {
 
 const isValid = computed(() => Object.keys(errors.value).length === 0);
 
-// The spec asks us to confirm the author exists by calling the API
-// and checking the status code before we save.
 const authorExists = async (authorId) => {
   const response = await fetch(`${API_URL}/authors/${authorId}`);
   return response.ok;

@@ -1,4 +1,3 @@
-/* Fonts */
 @font-face {
   font-family: 'DM Sans';
   font-weight: 400;
@@ -24,7 +23,6 @@
   src: url(/fonts/font-5.ttf) format('truetype');
 }
 
-/* Colors and fonts used across the app */
 :root {
   --paper: #faf8f6;
   --cream: #f3edee;
@@ -37,7 +35,6 @@
   --serif: 'DM Serif Display', Georgia, serif;
   --sans: 'DM Sans', system-ui, sans-serif;
 
-  /* Bootstrap variables */
   --bs-body-font-family: var(--sans);
   --bs-body-color: var(--ink);
   --bs-body-bg: var(--paper);
@@ -51,12 +48,9 @@ body {
   background: var(--paper);
   color: var(--ink);
   line-height: 1.65;
-  /* Full-width sections use 100vw, which is wider than the page when a
-     scrollbar is showing. Stop that from adding a sideways scrollbar. */
   overflow-x: hidden;
 }
 
-/* Headings use the serif font */
 h1,
 h2,
 h3,
@@ -65,15 +59,15 @@ h5 {
   font-family: var(--serif);
   font-weight: 400;
   color: var(--ink);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.5px;
 }
 
 h1 {
-  font-size: 2.8rem;
+  font-size: 45px;
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: 32px;
 }
 
 a {
@@ -84,11 +78,10 @@ a {
   max-width: 1180px;
 }
 
-/* Buttons */
 .btn {
   font-weight: 500;
   border-radius: 4px;
-  padding: 0.5rem 1.25rem;
+  padding: 8px 20px;
 }
 
 .btn-primary {
@@ -116,42 +109,37 @@ a {
   --bs-btn-hover-border-color: #d3c0c5;
 }
 
-/* Cards */
 .card {
   background: #fff;
   border: 1px solid var(--line);
   border-radius: 6px;
 }
 
-/* Small label above a heading */
 .eyebrow {
   font-family: var(--sans);
   font-size: 11px;
-  letter-spacing: 0.18em;
+  letter-spacing: 2px;
   text-transform: uppercase;
   color: #85656d;
 }
 
-/* Page hero */
 .hero {
   background: var(--cream);
   border: 1px solid var(--line);
   border-radius: 8px;
 }
 
-/* Tags */
 .tag {
   display: inline-block;
   background: var(--cream);
   color: #6d5059;
   border-radius: 3px;
   padding: 3px 9px;
-  font-size: 0.75rem;
-  letter-spacing: 0.04em;
+  font-size: 12px;
+  letter-spacing: 0.5px;
   margin: 0 4px 4px 0;
 }
 
-/* Author initial circle */
 .avatar {
   border-radius: 50%;
   background: var(--wine);
@@ -163,15 +151,13 @@ a {
   flex-shrink: 0;
 }
 
-/* Dashboard number */
 .stat-number {
   font-family: var(--serif);
   color: var(--wine);
-  font-size: 3rem;
+  font-size: 48px;
   line-height: 1.1;
 }
 
-/* Header */
 .navbar {
   background: var(--paper);
   border-bottom: 1px solid var(--line);
@@ -179,7 +165,7 @@ a {
 
 .navbar-brand {
   font-family: var(--serif);
-  font-size: 1.7rem;
+  font-size: 27px;
   color: var(--wine);
 }
 
@@ -192,7 +178,6 @@ a {
   font-weight: 700;
 }
 
-/* Tables */
 .table {
   --bs-table-bg: #fff;
   border-color: var(--line);
@@ -202,13 +187,12 @@ a {
   background: var(--cream);
   font-family: var(--sans);
   font-size: 11px;
-  letter-spacing: 0.12em;
+  letter-spacing: 1.3px;
   text-transform: uppercase;
   color: #85656d;
   font-weight: 500;
 }
 
-/* Forms */
 .form-control:focus,
 .form-select:focus {
   border-color: #c4a3ac;
@@ -216,11 +200,10 @@ a {
 }
 
 .form-label {
-  font-size: 0.85rem;
+  font-size: 14px;
   font-weight: 500;
 }
 
-/* Footer */
 .site-footer {
   background: var(--wine);
   color: #e6d2d8;
